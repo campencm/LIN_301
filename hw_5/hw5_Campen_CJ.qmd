@@ -1,0 +1,189 @@
+---
+title: "hw5_Campen_CJ"
+format: html
+---
+
+```{python}
+import pandas as pd
+
+url = "https://github.com/phoible/dev/blob/master/data/phoible.csv?raw=true"
+df = pd.read_csv(url, low_memory=False)
+df.head()
+```
+
+```{python}
+import pandas as pd
+import numpy as np
+import re
+
+# 1) Identify "feature-like" columns (only punctuation +, -, 0, commas, spaces after stripping)
+def is_feature_like(series, sample_n=300):
+    s = series.dropna().astype(str).str.strip()
+    if len(s) == 0:
+        return False
+    if len(s) > sample_n:
+        s = s.sample(sample_n, random_state=0)
+    # allow only + - 0 , and whitespace
+    return s.str.match(r'^[\s,\+\-0]+$').all()
+
+feature_cols = [c for c in df.columns if df[c].dtype == "object" and is_feature_like(df[c])]
+
+# 2) Normalize strings -> booleans: True if ANY '+' present; else False
+def plus_any_to_bool(x):
+    if pd.isna(x):
+        return False
+    if isinstance(x, (bool, np.bool_)):
+        return bool(x)
+    s = str(x).strip()
+    if s == "" or s == "0":
+        return False
+    # split on commas/spaces; True if any token has '+'
+    return any('+' in tok for tok in re.split(r'[,\s]+', s) if tok != "")
+
+df[feature_cols] = df[feature_cols].applymap(plus_any_to_bool).astype("boolean")
+
+# Confirm that it works: feature columns should now be True/False (nullable boolean)
+df[["tone","nasal","continuant","delayedRelease"]].dtypes
+df[["tone","nasal","continuant","delayedRelease"]].head(3)
+```
+
+```{python}
+import pandas as pd
+
+print("Num of Rows", len(df))
+print("Num of Columns", len(df.columns))
+print("---------------------")
+
+print("Column names", df.columns)
+print("---------------------")
+
+print("Type of index", df.index)
+```
+
+```{python}
+# Traditional natural classes using PHOIBLE boolean features
+nat_classes = {
+    "stop": (df["continuant"] == False) & (df["delayedRelease"] == False),
+    "affricate": (df["continuant"] == False) & (df["delayedRelease"] == True),
+    "fricative": (df["continuant"] == True) & (df["delayedRelease"] == True),
+    "nasal": (df["consonantal"] == True) & (df["continuant"] == False) & (df["nasal"] == True),
+    "liquid": (df["approximant"] == True) & (df["consonantal"] == True),
+    "glide": (df["approximant"] == True) & (df["syllabic"] == False),
+    "tap": df["tap"] == True,
+    "vowel": (df["approximant"] == True) & (df["syllabic"] == True),
+}
+```
+
+```{python}
+import pandas as pd 
+
+print("Distinct Languages:", df["LanguageName"].nunique())
+print("---------------------")
+
+largest_inventory = (
+  df.groupby("LanguageName")
+  ["Phoneme"].nunique().sort_values(ascending=False) )
+  
+print("Largest Inventory: !Xóō")
+print("---------------------")
+
+vowels = df[df["SegmentClass"] == "vowel"]
+vowels.head()
+print("---------------------")
+
+df["tone_b"] = df["tone"].astype(bool)
+tone_lang = df.groupby("LanguageName")["tone_b"].any().sum()
+print("Tone count:", tone_lang)
+
+print("---------------------")
+manner_count = {}
+
+for manner, form in nat_classes.items():
+  count = len(df[form])
+  manner_count[manner] = count
+  
+manner_df = pd.DataFrame(list(manner_count.items()), columns=["Manner", "Count"]).sort_values ("Count", ascending=False)
+
+print(manner_df)
+
+print("Most common manner: stop 41088")
+```
+
+```{python}
+import pandas as pd 
+
+df["IsVowel"] = df["SegmentClass"] == "vowel"
+df["Phoneme Length"] = df["Phoneme"].str.len()
+
+df
+```
+
+```{python}
+places = {
+    "bilabial": (df["labial"] == True) & (df["labiodental"] == False),
+    "labiodental": (df["labiodental"] == True),
+    "dental": (df["coronal"] == True) & (df["anterior"] == True) & (df["distributed"] == False),
+    "alveolar": (df["coronal"] == True) & (df["anterior"] == True) & (df["distributed"] == True),
+    "postalveolar": (df["coronal"] == True) & (df["anterior"] == False) & (df["distributed"] == True),
+    "retroflex": (df["coronal"] == True) & (df["anterior"] == False) & (df["distributed"] == False),
+    "palatal": (df["dorsal"] == True) & (df["high"] == True) & (df["front"] == True),
+    "velar": (df["dorsal"] == True) & (df["back"] == True) & (df["high"] == False),
+    "uvular": (df["dorsal"] == True) & (df["back"] == True) & (df["low"] == True),
+    "pharyngeal": (df["retractedTongueRoot"] == True),  # heuristic proxy
+    "glottal": ((df["spreadGlottis"] == True) | (df["constrictedGlottis"] == True)) &
+               (df["SegmentClass"].astype(str).str.lower() != "vowel")
+}
+```
+
+```{python}
+import pandas as pd
+r_df = df[df["LanguageName"] == "Romanian"]
+
+
+seg_total = r_df[(r_df["SegmentClass"] == "vowel") | (r_df["SegmentClass"] == "consonant")]["Phoneme"].nunique()
+
+seg_total
+print("---------------------")
+
+unique_vowels = r_df[r_df["SegmentClass"] == "vowel"]["Phoneme"].nunique()
+
+unique_consonants = r_df[r_df["SegmentClass"] == "consonant"]["Phoneme"].nunique()
+
+print("vowels", unique_vowels)
+print("consonants", unique_consonants)
+
+print("---------------------")
+
+r_manner_count = {}
+
+for manner, form in nat_classes.items():
+  new_index = r_df[form.loc [r_df.index]]
+  r_manner_count[manner] = len(new_index)
+
+r_manner_df = (pd.DataFrame(list(r_manner_count.items()), columns=["Manner", "Count"]).sort_values("Count", ascending=False) )
+
+print(r_manner_df)
+
+r_place_count = {}
+
+for place, form in places.items():
+  newer_index = r_df[form.loc[r_df.index]]
+  r_place_count[place] = len(newer_index)
+
+r_place_df = (pd.DataFrame(list(r_place_count.items()), columns=["Place", "Count"]).sort_values("Count", ascending=False)  )
+
+print(r_place_df)
+
+
+r_df.to_csv("phoible_output.csv", index=False)
+```
+
+```{python}
+"Some of the patterns I noticed are that some of the manners and places of articulation share the same amount phonemes (for example: there are just as many affricates as there are glides and there are just as many dental phonemes as there postalveolar phonemes)."
+print("---------------------")
+
+"I was surprised by the fact that phoible says there are 40 consonants in Romanian when there are only 20 consonants (and 22 consonant phonemes)."
+print("---------------------")
+
+"Not too sure that phoible will be a big help with my project because the song I picked is in english, but it's good to know that it exists in case I do need it and I'm glad I know how to nagivate it at least a little bit now."
+```

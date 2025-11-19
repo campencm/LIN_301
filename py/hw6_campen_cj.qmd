@@ -1,0 +1,368 @@
+---
+title: "hw6_campen_cj"
+format: html
+---
+
+```{python}
+with open("./peter_pan.txt", "r", encoding="utf-8") as f:
+    pan = f.read()
+```
+
+```{python}
+#Part 1 — Tokenizing & Lemmatizing Text
+import spacy
+import pandas as pd
+from collections import Counter
+
+nlp = spacy.load("en_core_web_sm")
+
+doc = nlp(pan)
+
+#Tokenize and lemmatize it using spaCy
+tokens = [t.text for t in doc]
+lemmas = [t.lemma_ for t in doc]
+
+#Filter for content words (nouns, verbs, adjectives, adverbs)  
+content_lemmas = [t.lemma_.lower() for t in doc
+                  if not (t.is_stop or t.is_punct or t.is_space or t.like_num)]
+                  
+#Count frequency of lemmas
+freq = Counter(content_lemmas)
+              
+#Getting the POS
+pos = {}
+for t in doc:
+    lemma = t.lemma_.lower()
+    if lemma in freq and lemma not in pos:
+        pos[lemma] = t.pos_
+                  
+#Create a pandas DataFrame showing lemma, POS, and frequency 
+df = pd.DataFrame(
+    [(lemma, pos[lemma], freq[lemma]) for lemma in freq],
+    columns=["Lemma", "POS", "Frequency"]
+).sort_values("Frequency", ascending=False)
+
+df.head(10)
+```
+
+```{python}
+#Part 1 — Tokenizing & Lemmatizing Text
+import spacy
+import pandas as pd
+import matplotlib.pyplot as plt 
+
+
+#Plot them using matplotlib
+top10 = df.head(10)
+plt.figure()
+plt.bar(top10["Lemma"], top10["Frequency"])
+plt.title("Top 10 Content Lemmas")
+plt.xlabel("Lemma")
+plt.ylabel("Frequency")
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+```
+
+```{python}
+import spacy
+from spacy_wordnet.wordnet_annotator import WordnetAnnotator
+
+nlp = spacy.load("en_core_web_sm")
+# Attach the WordNet annotator; it will use the NLTK WordNet data you downloaded
+nlp.add_pipe("spacy_wordnet", after="tagger")
+```
+
+```{python}
+#Part 2 — Exploring Meaning with WordNet
+#Peter synsets
+
+from spacy.tokens import Token
+from spacy_wordnet.wordnet_annotator import WordnetAnnotator
+
+top_five= nlp("peter say wendy know cry")
+tok = top_five[0]
+
+synsets = tok._.wordnet.synsets()
+
+print(f"These are the different meanings the word '{tok}' has:")
+count = 1
+
+for s in synsets:
+  print(f"{count}: ", s)
+  print("Definition:", s.definition())
+  print("Example(s):", s.examples())
+  hypernym_names = [h.name() for h in s.hypernyms()]
+  hyponym_names  = [h.name() for h in s.hyponyms()]
+  print(f"  Hypernyms: {hypernym_names}")
+  print(f"  Hyponyms:  {hyponym_names}")
+  count += 1
+```
+
+```{python}
+#Part 2 — Exploring Meaning with WordNet
+#Say synsets
+
+from spacy.tokens import Token
+from spacy_wordnet.wordnet_annotator import WordnetAnnotator
+
+top_five= nlp("peter say wendy know cry")
+tok = top_five[1]
+
+synsets = tok._.wordnet.synsets()
+
+print(f"These are the different meanings the word '{tok}' has:")
+count = 1
+
+for s in synsets:
+  print(f"{count}: ", s)
+  print("Definition:", s.definition())
+  print("Example(s):", s.examples())
+  hypernym_names = [h.name() for h in s.hypernyms()]
+  hyponym_names  = [h.name() for h in s.hyponyms()]
+  print(f"  Hypernyms: {hypernym_names}")
+  print(f"  Hyponyms:  {hyponym_names}")
+  count += 1
+```
+
+```{python}
+#Part 2 — Exploring Meaning with WordNet
+#Wendy synsets
+
+from spacy.tokens import Token
+from spacy_wordnet.wordnet_annotator import WordnetAnnotator
+
+top_five= nlp("peter say wendy know cry")
+tok = top_five[2]
+
+synsets = tok._.wordnet.synsets()
+
+print(f"These are the different meanings the word '{tok}' has:")
+count = 1
+
+for s in synsets:
+  print(f"{count}: ", s)
+  print("Definition:", s.definition())
+  print("Example(s):", s.examples())
+  hypernym_names = [h.name() for h in s.hypernyms()]
+  hyponym_names  = [h.name() for h in s.hyponyms()]
+  print(f"  Hypernyms: {hypernym_names}")
+  print(f"  Hyponyms:  {hyponym_names}")
+  count += 1
+```
+
+```{python}
+#Part 2 — Exploring Meaning with WordNet
+#Know synsets
+
+from spacy.tokens import Token
+from spacy_wordnet.wordnet_annotator import WordnetAnnotator
+
+top_five= nlp("peter say wendy know cry")
+tok = top_five[3]
+
+synsets = tok._.wordnet.synsets()
+
+print(f"These are the different meanings the word '{tok}' has:")
+count = 1
+
+for s in synsets:
+  print(f"{count}: ", s)
+  print("Definition:", s.definition())
+  print("Example(s):", s.examples())
+  hypernym_names = [h.name() for h in s.hypernyms()]
+  hyponym_names  = [h.name() for h in s.hyponyms()]
+  print(f"  Hypernyms: {hypernym_names}")
+  print(f"  Hyponyms:  {hyponym_names}")
+  count += 1
+```
+
+```{python}
+#Part 2 — Exploring Meaning with WordNet
+#Cry synsets
+
+from spacy.tokens import Token
+from spacy_wordnet.wordnet_annotator import WordnetAnnotator
+
+top_five= nlp("peter say wendy know cry")
+tok = top_five[4]
+
+synsets = tok._.wordnet.synsets()
+
+print(f"These are the different meanings the word '{tok}' has:")
+count = 1
+
+for s in synsets:
+  print(f"{count}: ", s)
+  print("Definition:", s.definition())
+  print("Example(s):", s.examples())
+  hypernym_names = [h.name() for h in s.hypernyms()]
+  hyponym_names  = [h.name() for h in s.hyponyms()]
+  print(f"  Hypernyms: {hypernym_names}")
+  print(f"  Hyponyms:  {hyponym_names}")
+  count += 1
+```
+
+```{python}
+#Part 3 — Semantic Similarity
+
+from spacy.tokens import Token
+from spacy_wordnet.wordnet_annotator import WordnetAnnotator
+
+def syn(word):
+    token = nlp(word)[0]
+    synset = token._.wordnet.synsets()
+    if synset:
+        return synset[0]
+    else:
+        print(f"There are no synsets for the word '{word}'")
+        return None
+
+
+think = syn("think")
+know = syn("know")
+
+say = syn("say")
+cry = syn("cry")
+
+peter = syn("peter")
+wendy = syn("wendy")
+
+hook = syn("hook")
+come = syn("come")
+
+boy = syn("boy")
+time = syn("time")
+
+
+print("1 wup for Think & Know:",  think.wup_similarity(know))
+print("2 wup for Say & Cry:",  say.wup_similarity(cry))
+print("3 wup for Peter & Wendy:", "There is no synset available for the word Wendy")
+print("4 wup for Hook & Come:",  hook.wup_similarity(come))
+print("5 wup for Boy & Time:",  boy.wup_similarity(time))
+```
+
+```{python}
+print("The pairs with the most similarity are the first (Think & Know) and the second (Say & Cry)", "Here are my thoughts on each pairing:", "1 I'm honestly really surprised that the similarity value for these two isn't higher, I paired them because I figured they'd be almost identical but it seems like they're being rated fairly far apart but their value is higher than the value for boy and time it at least makes some sense to me",
+"2 I also thought the similarity vlaue for these two would be higher but I'm not as surprised about it as 'Think' and 'Know' because I was half expecting it to use the synset for 'Cry' that means to like sob and not the one that means to like yell out and that one seems farther from 'Say' than the to yell out one, it seems to be using the synset that means to state something, so it makes sense to me why they're pretty close but maybe not as close as they could be",
+"3 This one was giving me a lot of issues because apparently there are no synsets for the word 'Wendy' so it was crashing because it was trying to pair a synset with nothing, I ended up having to just take the code out and write that 'Wendy' didn't have a synset because it was giving me a huge error message every time. I'd be curious to learn if there's a way to fix an error message like that if there isn't a synset for a word",
+"4 I wasn't sure for this one if wordnet would treat 'Hook' as a noun or a verb but I'm pretty sure it's giving me the output 'None' because they have no wup similarity so I think it's treating 'Hook' as a noun and 'Come' as a verb and because nouns and verbs often don't have a hypernym in common, they just don't have any similarity",
+"5 I'm not too surprised by this one, I knew boy and time weren't very similar in meaning so I paired them with eachother to see what a lower raiting would look like")
+```
+
+```{python}
+#Part 4 — Building a Semantic Field
+import spacy
+from spacy.matcher import PhraseMatcher
+from nltk.corpus import wordnet as wn
+
+nlp = spacy.load("en_core_web_sm")
+
+def verb_senses(word):
+    return wn.synsets(word, pos='v')
+
+def all_verb_hyponyms(root):
+      seen, stack = set(), [root]
+    while stack:
+        cur = stack.pop()
+        if cur in seen:
+            continue
+        seen.add(cur)
+        stack.extend(cur.hyponyms())
+    return {s for s in seen if s.pos() == 'v'}
+
+def lemmas_from_synsets(synsets, keep_multiword=False):
+    out = set()
+    for s in synsets:
+        for lem in s.lemmas():
+            name = lem.name().lower()
+            if not keep_multiword and "_" in name:
+                continue
+            out.add(name.replace("_", " "))
+    return out
+
+action_verbs = ["fly", "climb", "escape", "run", "swim", "jump", "fall", "lead", "chase"]
+base_synsets = []
+for w in action_verbs:
+    ss = verb_senses(w)
+    if ss:
+        ss_scored = sorted(ss, key=lambda s: len(s.hyponyms()), reverse=True)
+        base_synsets.append(ss_scored[0])
+
+expanded = set()
+for s in base_synsets:
+    expanded |= all_verb_hyponyms(s)
+
+action_verb_lemmas = sorted(lemmas_from_synsets(expanded, keep_multiword=False) | set(action_verbs))
+print(f"{len(action_verb_lemmas)} action verb lemmas (sample):", action_verb_lemmas[:25])
+
+matcher = PhraseMatcher(nlp.vocab, attr="LEMMA")
+patterns = list(nlp.pipe(action_verb_lemmas)) 
+matcher.add("ACTION", patterns)
+```
+
+```{python}
+#Part 4 — Building a Semantic Field
+import spacy
+from spacy.matcher import PhraseMatcher
+from nltk.corpus import wordnet as wn
+
+nlp = spacy.load("en_core_web_sm")
+
+#Defining my semantic category
+print("Category: Action Verbs", "(these verbs describe actions like running or speaking)")
+
+#Action Verbs:
+action_verbs = ["fly", "climb", "escape", "run", "swim", "jump", "fall", "lead", "chase", "stab"]
+print("Action Verbs:", action_verbs)
+
+#The Functions
+def verb_senses(word):
+    return wn.synsets(word, pos='v')
+
+def all_verb_hyponyms(root):
+      seen, stack = set(), [root]
+    while stack:
+        cur = stack.pop()
+        if cur in seen:
+            continue
+        seen.add(cur)
+        stack.extend(cur.hyponyms())
+    return {s for s in seen if s.pos() == 'v'}
+
+def lemmas_from_synsets(synsets, keep_multiword=False):
+    out = set()
+    for s in synsets:
+        for lem in s.lemmas():
+            name = lem.name().lower()
+            if not keep_multiword and "_" in name:
+                continue
+            out.add(name.replace("_", " "))
+    return out
+  
+#Base synsets
+base_synsets = []
+for w in action_verbs:
+    ss = verb_senses(w)
+    if ss:
+        ss_scored = sorted(ss, key=lambda s: len(s.hyponyms()), reverse=True)
+        base_synsets.append(ss_scored[0])
+        
+#Expanded
+expanded = set()
+for s in base_synsets:
+    expanded |= all_verb_hyponyms(s)
+    
+
+action_verb_lemmas = sorted(lemmas_from_synsets(expanded, keep_multiword=False) | set(action_verbs))
+print(f"{len(action_verb_lemmas)} action verb lemmas (sample):", action_verb_lemmas[:25])
+
+patterns = [nlp(v) for v in action_verb_lemmas]
+matcher = PhraseMatcher(nlp.vocab, attr="LEMMA")
+matcher.add("ACTION", patterns)
+[(doc[s:e].text, doc[s:e].lemma_) for _, s, e in matcher(doc)]
+```
+
+```{python}
+print("Wordnet seems to have added a bunch of new items to the list but a lot of them are pretty similar to words already in the list. I don't think there are any obvious ones missing, but there are a few that have a lot less similar words than others. there are so many additions for the word fly and I really wonder why that is.")
+```

@@ -1,0 +1,107 @@
+---
+title: "campen_cj_component2"
+format: html
+---
+
+```{python}
+#1 To open and read my file
+
+with open("./arm.txt", "r", encoding="utf-8") as f:
+    arm = f.read()
+```
+
+```{python}
+#2 Cleaning my data and making it into a list
+
+import re
+
+clean_arm = re.split(r"[\s\W]+", arm) 
+clean_arm = [w.lower() for w in clean_arm if w]
+
+clean_arm
+```
+
+```{python}
+#Making a list of only the unique words
+
+unique_arm = []
+
+for word in clean_arm:
+  if word not in unique_arm:
+    unique_arm.append(word)
+  
+unique_arm
+```
+
+```{python}
+#Finding the amount of characters per word
+
+word_length = []
+
+for word in unique_arm:
+  word_length.append(len(word))
+  
+word_length
+```
+
+```{python}
+#Finding the amount of vowels in each word
+
+vowel_amount = []
+
+for w in unique_arm:
+    vowels = 0               
+    for c in w:              
+        if c in "aeiou":     
+            vowels += 1   
+    vowel_amount.append(vowels)
+    
+vowel_amount
+```
+
+```{python}
+#Finding the frequency of each word
+
+word_count = {}
+
+for word in clean_arm:
+  if word in word_count:
+    word_count[word] += 1
+  else:
+    word_count[word] = 1
+    
+frequency = word_count.values()
+frequency
+```
+
+```{python}
+#4 Converting my lists into a data frame
+
+arm_dict = {}
+for i, j, k, l in zip(unique_arm,word_length,vowel_amount,frequency):
+  arm_dict[i] = {
+    "characters": j,
+    "vowels": k,
+    "frequency": l
+}
+
+import pandas as pd
+
+df = pd.DataFrame(arm_dict).T.reset_index(names="word")
+df
+
+
+#5 Saving my data frame as a csv file
+
+df.to_csv("campen_cj_component2.csv", index=False) 
+```
+
+```{python}
+#7 Explinations
+
+#My raw file is the first half of the story in the 18 minute song Alice's Resturant Massacree https://www.youtube.com/watch?v=WaKIX6oaSLs
+
+#The only cleaning I did of my data was removing all the punctuation and white spaces with regex and making everything lowercase. One fix I would really like to make with this project is to keep my apostrophes in my data when they appear with words and to make it so my data isn't split by apostrophes (so words like "can't" don't become "can", "t"). I tried researing how to do this at some point, but every solution I found for it either was too complex to understand or wouldn't work. 
+
+#The output CSV file has four columns: the word itself, the amount of characters in that word, the amount of vowels in that word, and the frequency of that word. There are 363 rows in total. One thing I find interesting is how you can really see the repeated lines reflected in the frequency of the words. For example, the lines "...twenty-seven eight-by-ten colored glossy photographs With circles and arrows An’ a paragraph on the back of each one Explainin’ what each one was to be used as evidence against us" is repeated a handfull of times through out the song, and you wouldn't expect a lot of those words to have very high frequencies, but because he repeats those almost those exact words so many times, their frequencies are higher to reflect that repetition. 
+```

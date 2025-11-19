@@ -1,0 +1,39 @@
+---
+title: "hw3"
+format: html
+---
+
+```{python}
+with open("./shakespeare.txt", "r", encoding="utf-8") as f:
+    text = f.read()
+```
+
+```{python}
+first_words = text.split()[:1000]
+print(first_words)
+
+print(first_words[500])
+```
+
+```{python}
+chosen_ones = ["art", "ten", "beauty’s", "besiege", "it", "tombed", "world’s", "tillage", "eyes", "thriftless"]
+print(chosen_ones)
+```
+
+```{python}
+bill = text.split()
+print(bill)
+```
+
+```{python}
+word_count = {word: text.count(word) for word in chosen_ones}
+print(word_count)
+```
+
+```{python}
+"The easiest part of this assignment was making the hw3_file"
+
+"The hardest part of this assignment was figuring out how to make your code work to assign the text variable to the shakespere.txt"
+
+"To help them find the words they would like to analyze because could you imagine having to read all of shakepeare's works just to find how many times someone says a specific word"
+```

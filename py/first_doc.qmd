@@ -1,0 +1,3218 @@
+---
+title: "first_doc"
+format: html
+---
+
+---
+title: "My First Quarto Document"
+author: "Your Name Here"
+date: "2025-09-29"
+format: html
+---
+
+# Introduction
+
+This is my very first Quarto document!\
+It will generate a PDF when I render it.
+
+# Python Example
+
+Here’s a Python code block that prints `"Hello World!"`:
+
+```{python}
+print("Hello world!")
+```
+
+```{python}
+hello_world = "Hello world!"
+print(hello_world)
+```
+
+```{python}
+my_age = 19
+current_year = 2025
+year_of_birth = current_year - my_age
+my_age = 50
+print(my_age)
+```
+
+```{python}
+my_age = 19
+current_year = 2025
+year_of_birth = current_year - my_age
+#print(year_of_birth)
+
+first_child = 30 - my_age
+my_age + first_child + 18 
+
+child_18_year = year_of_birth + 30 + 18
+```
+
+```{python}
+num_1 = 1
+type(num_1)
+```
+
+```{python}
+num_2 = 1.5
+type(num_2)
+```
+
+```{python}
+word = ("pin")
+starts_p = word[0] = "p"
+starts_t = word[0] = "t"
+starts_k = word[0] = "k"
+
+aspirated = starts_p or starts_t or starts_k 
+print("Word:", word)
+print("Aspirated?", aspirated)
+```
+
+```{python}
+novels = ["Sense and Sensibility", "Pride and Prejudice", "Mansfield Park", "Emma", "Northanger Abbey", "Persuasion", "Lady Susan"]
+print(novels)
+```
+
+```{python}
+pub_year = [1811, 1813, 1814, 1815, 1818, 1818, 1871]
+susan_index = novels.index("Lady Susan")
+pub_year[susan_index]
+```
+
+```{python}
+orwell_novels = ["Animal Farm", "Nineteen Eighty-Four", "Burmese Days", "Keep the Aspidistra Flying", "Coming Up for Air"]
+pub_year = [1945, 1949, 1934, 1936, 1939]
+print(orwell_novels[0] + " " + orwell_novels[4])
+orwell_novels.index("Burmese Days")
+pub_year.index(1936)
+```
+
+```{python}
+novels[0:3]
+# ['Sense and Sensibility', 'Pride and Prejudice', 'Mansfield Park']
+```
+
+```{python}
+"Emma" in novels          # True
+"Frankenstein" in novels  # False
+```
+
+```{python}
+complex_list = [["Sense and Sensibility", 1811],
+                ["Pride and Prejudice", 1813],
+                ["Mansfield Park", 1814],
+                ["Emma", 1815]]
+complex_list[0]
+```
+
+```{python}
+austen_dict = {
+    "Sense and Sensibility": 1811,
+    "Pride and Prejudice": 1813,
+    "Mansfield Park": 1814,
+    "Emma": 1815,
+    "Northanger Abbey": 1818,   # duplicate value
+    "Persuasion": 1818,         # duplicate value
+    "Lady Susan": 1871
+}
+austen_dict["Pride and Prejudice"]
+
+austen_dict["The Rise of Han Solo"] = 2025
+print()
+```
+
+```{python}
+orwell_dict = {
+    "Animal Farm": 1945,
+    "Nineteen Eighty-Four": 1949,
+    "Burmese Days": 1934,
+    "Keep the Aspidistra Flying": 1936,
+    "Coming Up for Air": 1939
+}
+
+print(orwell_dict["Animal Farm"])
+
+print(orwell_dict["Homage to Catalonia"])
+
+orwell_dict["Homage to Catalonia"] = 1937
+
+print(orwell_dict)
+
+orwell_dict["Homage to Catalonia"] = 1938
+
+print(orwell_dict)
+
+del orwell_dict["Coming Up for Air"]
+
+print(orwell_dict) 
+```
+
+```{python}
+x = 51
+if x % 2 == 0: 
+    print(x, "is even.") 
+    print("This line only prints if it's even too.") 
+print("This line prints no matter what.") 
+```
+
+```{python}
+x = 51
+if x % 2 == 0: 
+    print(x, "is even") 
+else: 
+    print(x, "is odd") 
+```
+
+```{python}
+x = 50
+if x % 2 == 0:
+    print(x, "is even.")
+elif x % 2 == 1:
+    print(x, "is odd.")
+else:
+    print(x, "is a decimal.")
+```
+
+```{python}
+charlotte = ["The Professor", "Jane Eyre", "Shirley", "Villette"] 
+emily = ["Wuthering Heights"] 
+anne = ["Agnes Grey", "The Tenant of Wildfell Hall"] 
+
+bronte_checks = {"charlotte": 0, "emily": 0, "anne" : 0}  #a starter dict, where the values of each bronte book is at 0
+
+novel = "Jane Eyre"     # we identify the novel we're looking at
+
+if novel in charlotte: 
+    bronte_checks["charlotte"] = bronte_checks["charlotte"] + 1
+    print("Charlotte Brontë wrote", novel) 
+elif novel in emily: 
+    bronte_checks["emily"] = bronte_checks["emily"] + 1
+    print("Emily Brontë wrote", novel) 
+elif novel in anne: 
+    bronte_checks["anne"] = bronte_checks["anne"] + 1
+    print("Anne Brontë wrote", novel) 
+else: print(novel, "was not written by one of the Brontë sisters") #if the novel is in none of these, we get our else statement
+    
+print(bronte_checks)
+```
+
+```{python}
+sound = "d"
+
+vowels = ["a", "e", "i", "o", "u"]
+consonants = ["d", "p", "t", "k", "m", "n", "s", "r", "l"]
+
+if sound in vowels:
+  print(sound, "is a vowel.")
+  
+elif sound in consonants:
+   print(sound, "is a consonant.")
+   
+else:
+  print(sound, "is not a vowel or consonant.")
+
+```
+
+```{python}
+word = "bʌs"
+
+sibilants = ["s", "z", "ʃ", "ʒ", "tʃ", "dʒ"] 
+voiceless = ["p", "t", "k", "f", "θ"]
+
+
+if word[-1] in sibilants :
+  plural = word + "ɪz"
+elif word[-1] in voiceless :
+  plural = word + "s"
+else :
+  plural = word + "z"
+  
+print(plural)
+  
+```
+
+```{python}
+for title in charlotte: 
+    print(title)
+```
+
+```{python}
+charlotte = ['The Professor', 'Jane Eyre', 'Shirley', 'Villette']
+for book in charlotte: 
+    print(book)
+print(book)
+```
+
+```{python}
+words = ["phoneme", "phrase", "morpheme", "reconstruction", "index"]
+
+for word in words:
+  print(word, "has", len(word), "letters")
+```
+
+```{python}
+import os
+print(os.getcwd())
+```
+
+```{python}
+import urllib.request
+
+url = "https://www.gutenberg.org/files/141/141-0.txt"  # Mansfield Park
+filename = "mansfield_park.txt"
+
+urllib.request.urlretrieve(url, filename)
+
+print("Downloaded:", filename)
+```
+
+```{python}
+with open("mansfield_park.txt", "r", encoding="utf-8") as f:
+    book_text = f.read()
+    
+print(book_text[:200])
+```
+
+```{python}
+with open("mansfield_park.txt", "r", encoding="utf-8") as f:
+    book_lines = f.readlines()
+
+len(book_lines)
+
+book_lines[101]
+
+one_line = book_lines[101]
+one_line.rstrip()
+
+one_line.strip().lower()
+```
+
+```{python}
+with open("mansfield_park.txt", "r", encoding="utf-8") as f:
+  lines = f.readlines()
+  
+mansfield_cleaned = [line.strip().lower() for line in lines]
+
+print(mansfield_cleaned[0:19])
+```
+
+```{python}
+words = [" Cat\n", "dog", " BIRD ", "fish\n", "LION", "tiger ", "bear", "OWL\n"]
+
+  
+for word in words:
+    cleaned = word.strip().lower()
+    print(cleaned)
+```
+
+```{python}
+test_list = ["a", "b", "c"]
+test_list.append("d")
+
+print(test_list)
+```
+
+```{python}
+words = [" Cat\n", "dog", " BIRD ", "fish\n", "LION", "tiger ", "bear", "OWL\n"]
+cleaned_words = []
+
+for word in words:
+    cleaned = word.strip().lower()
+    cleaned_words.append(cleaned)
+
+print(cleaned_words)
+```
+
+```{python}
+words = [" Cat\n", "dog", " BIRD ", "fish\n", "LION", "tiger ", "bear", "OWL\n"]
+
+cleaned_words = [word.strip().lower() for word in words]
+
+print(cleaned_words)
+```
+
+```{python}
+items = ["color", "flavour", "theater", "center", "analyze", "organize", "favorite", "neighbor", "honor", "catalog", "honour", "flavor", "analyse", "flavor", "traveler"]
+
+print(len(items))
+```
+
+```{python}
+items = ["color", "flavour", "theater", "center", "analyze", "organize", "favorite", "neighbor", "honor", "catalog", "honour", "flavor", "analyse", "flavor", "traveler"]
+
+item_count = 0
+for item in items:
+    item_count += 1
+    print(item, item_count)
+```
+
+```{python}
+items = ["color", "flavour", "theater", "center", "analyze", "organize", "favorite", "neighbor", "honor", "catalog", "honour", "flavor", "analyse", "flavor", "traveler"]
+
+c_item_count = 0
+for item in items:
+    if item[0] == "c":
+        c_item_count += 1
+        print(item, c_item_count)
+```
+
+```{python}
+items = ["color", "flavour", "theater", "center", "analyze", "organize", "favorite", "neighbor", "honor", "catalog", "honour", "flavor", "analyse", "flavor", "traveler"]
+
+r_item_count = 0
+for item in items:
+    if item[-1] == "r":
+        r_item_count += 1
+        print(item, r_item_count)
+```
+
+```{python}
+items = ["color", "flavour", "theater", "center", "analyze", "organize", "favorite", "neighbor", "honor", "catalog", "honour", "flavor", "analyse", "flavor", "traveler"]
+
+for item in items:
+  new_item = item.replace("our", "or")
+  print(new_item)
+
+```
+
+```{python}
+items = ["color", "flavour", "theater", "center", "analyze", "organize", "favorite", "neighbor", "honor", "catalog", "honour", "flavor", "analyse", "flavor", "traveler"]
+
+down_with_brits = []
+for word in items:
+    if word.endswith("our"):
+        word = word.replace("our", "or")
+    elif word.endswith("yse"):
+        word = word.replace("yse", "yze")
+    down_with_brits.append(word)
+
+print(down_with_brits)
+```
+
+```{python}
+getty = "Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal."
+
+getty.split()
+```
+
+```{python}
+import re
+
+text = "Hello, world!   This... is a test."
+words = re.split(r"[\s\W]+", text)
+words = [w for w in words if w]
+print(words)
+```
+
+```{python}
+with open("./alice.txt", "r", encoding="utf-8") as f:
+    alice_text = f.read()
+    
+print(alice_text[:100])
+```
+
+```{python}
+
+word = "computation"
+vowels = "aeiou"
+
+
+for x in word:
+  if x in vowels:
+    print(f"{x} is a vowel")
+```
+
+```{python}
+import pandas as pd
+
+langs = pd.Series(["Latin", "Greek", "Sanskrit"], name="language")
+langs
+```
+
+```{python}
+import pandas as pd
+
+langs = pd.Series(["Latin", "Greek", "Sanskrit", "Finnish"], index=["a","b","c","d"], name="language")
+langs
+```
+
+```{python}
+import pandas as pd
+
+lang_df = pd.DataFrame(langs)
+lang_df
+```
+
+```{python}
+import pandas as pd
+
+fam = pd.Series(["Indo-European", "Indo-European", "Indo-European", "Uralic"], index=["a","b","c","d"], name="family")
+fam
+```
+
+```{python}
+import pandas as pd
+
+speakers = pd.Series([0, 0, 0, 6], index=["a","b","c","d"], name="speakers_millions")
+speakers
+```
+
+```{python}
+import pandas as pd
+
+langs = pd.Series(["Latin", "Greek", "Sanskrit", "Finnish"], index=["a","b","c","d"], name="language")
+fam = pd.Series(["Indo-European", "Indo-European", "Indo-European", "Uralic"], index=["a","b","c","d"], name="family")
+speakers = pd.Series([0, 0, 0, 6], index=["a","b","c","d"], name="speakers_millions")
+
+languages_df = pd.concat([langs, fam, speakers], axis=1)
+print(languages_df)
+```
+
+```{python}
+import pandas as pd
+
+location = pd.Series(["Italy", "Greece", "India", "Finland"], index=["a","b","c","d"], name="location")
+new_df = pd.concat([languages_df, location], axis=1)
+
+print(new_df)
+```
+
+```{python}
+import pandas as pd
+
+fresh_df = pd.DataFrame({
+    "language": ["Latin", "Greek", "Sanskrit", "Finnish"],
+    "family":   ["Indo-European", "Indo-European", "Indo-European", "Uralic"],
+    "speakers_millions": [0, 0, 0, 6],
+    "location": ["Italy", "Greece", "India", "Finland"]
+}, index=["a","b","c","d"])
+
+print(fresh_df)
+```
+
+```{python}
+import pandas as pd
+
+fresh_df = pd.DataFrame({
+    "sound": ["/p/", "/b/", "/t/", "/d/", "/s/", "/h/"],
+    "voicing":   ["voiceless", "voiced", "voiceless", "voiced", "voiceless", "voiceless"],
+    "place": ["bilabial", "bilabial", "alveolar", "alveolar", "alveolar", "glottal"],
+    "manner": ["stop", "stop", "stop", "stop", "fricative", "fricative"]
+})
+
+print(fresh_df)
+```
+
+```{python}
+import pandas as pd
+
+gettysburg = ["Four", "score", "and", "seven", "years", "ago"]
+getty = pd.Series(gettysburg)
+
+print(getty)
+```
+
+```{python}
+languages = {
+    "French": "Romance",
+    "Spanish": "Romance",
+    "Italian": "Romance",
+    "English": "Germanic"
+}
+```
+
+```{python}
+import pandas as pd
+
+languages = {
+    "French": ["Romance"],
+    "Spanish": ["Romance"],
+    "Italian": ["Romance"],
+    "English": ["Germanic"]
+}
+lang_df = pd.DataFrame(languages)
+print(lang_df)
+```
+
+```{python}
+import pandas as pd
+
+languages = {
+    "French": ["Romance", 1, "b"],
+    "Spanish": ["Romance", 1, "c"],
+    "Italian": ["Romance", 4, "a"],
+    "English": ["Germanic", 10, "x"]
+}
+lang_df = pd.DataFrame(languages)
+print(lang_df)
+```
+
+```{python}
+import pandas as pd
+
+languages = {
+    "French": "Romance",
+    "Spanish": "Romance",
+    "Italian": "Romance",
+    "English": "Germanic"
+}
+
+lang_df = pd.DataFrame.from_dict(languages, orient="index", columns=["Family"])
+print(lang_df)
+```
+
+```{python}
+import pandas as pd
+
+languages = {
+    "French": "Romance",
+    "Spanish": "Romance",
+    "Italian": "Romance",
+    "English": "Germanic"
+}
+
+lang_df = pd.DataFrame(list(languages.items()), columns=["Language", "Family"])
+print(lang_df)
+```
+
+```{python}
+import pandas as pd
+
+languages = {
+    "French": "Romance",
+    "Spanish": "Romance",
+    "Italian": "Romance",
+    "English": "Germanic" }
+    
+lang_df = pd.DataFrame(list(languages.items()), colums=[ Language , Family ])
+
+new_info == pd.DataFrame({
+  "Location": ["France", "Spain", "Italy", "England"],
+  "Speakers_millions": [80, 485, 65, 380],
+  "Writing_System": ["Latin", "Latin", "Latin", "Latin"],
+  "ISO_code": ["fra", "spa", "ita", "eng"],
+})
+
+lang_updated = pd.concat([lang_df, new_info], axis=1)
+
+
+print(lang_updated)
+```
+
+```{python}
+import pandas as pd 
+
+fresh_df = pd.DataFrame({
+  "Root" : ["*bʰer-", "*ĝenh₁", "*ped-", "*doh₃-"],
+  "Meaning" : ["to carry", "to beget", "foot", "to give"],
+  "Latin" : ["ferō", "gignō", "pēs", "dō"],
+  "Greek" : ["pʰérō", "gígnomai", "poús", "dídōmi"],
+  "English" : ["bear", "kin", "foot", "donate"],
+})
+
+fresh_df
+```
+
+```{python}
+import pandas as pd
+
+fresh_df = pd.DataFrame({
+    "language": ["Latin", "Greek", "Sanskrit", "Finnish"],
+    "family":   ["Indo-European", "Indo-European", "Indo-European", "Uralic"],
+    "speakers_millions": [0, 0, 0, 6],
+    "location": ["Italy", "Greece", "India", "Finland"]
+})
+
+print(fresh_df)
+```
+
+```{python}
+import pandas as pd
+
+fresh_df.head(2) 
+print("-------------------")
+fresh_df.tail(2) 
+print("-------------------")
+fresh_df.shape
+print("-------------------")
+fresh_df.columns
+print("-------------------")
+fresh_df.index
+print("-------------------")
+fresh_df.info()
+print("-------------------")
+```
+
+```{python}
+import pandas as pd
+
+fresh_df["language"]           # Series
+print("-------------------")
+fresh_df[["language","family"]] # DataFrame
+print("-------------------")
+fresh_df.iloc[0]               # first row
+print("-------------------")
+fresh_df.iloc[1:3]             # slice rows 1..2
+```
+
+```{python}
+import pandas as pd
+
+# Rows by label (after we set a custom index)
+fresh_df2 = df.copy()
+fresh_df2.index = ["a","b","c","d"]
+fresh_df2.loc["b"]             # row labeled 'b'
+```
+
+```{python}
+import pandas as pd 
+
+fresh_df.loc[0, "language"]        # cell by label/column
+print("-------------------")
+fresh_df.iloc[0, 0]                # cell by position
+print("-------------------")
+fresh_df.iloc[0:3, 0:2]            # rows 0..2, cols 0..1
+print("-------------------")
+ie = fresh_df[fresh_df["family"] == "Indo-European"]
+ie
+print("-------------------")
+fresh_df[(fresh_df["family"]=="Indo-European") & (fresh_df["location"]=="India")]
+print("-------------------")
+fresh_df[(fresh_df["family"]=="Indo-European") | (fresh_df["location"]=="Finland")]
+print("-------------------")
+fresh_df[~(fresh_df["family"]=="Indo-European")]
+print("-------------------")
+fresh_df.sort_values(["location"])
+print("-------------------")
+fresh_df["speakers_millions"].sum()
+int(fresh_df["speakers_millions"].sum())
+```
+
+```{python}
+import pandas as pd
+
+eng_vowels = pd.DataFrame({
+    "symbol": ["i", "ɪ", "e", "ɛ", "æ", "u", "ʊ", "o", "ɔ", "ɑ", "ʌ", "ə"],
+    "height": ["high", "high", "mid", "mid", "low", "high", "high", "mid", "mid", "low", "mid", "mid"], #choose from "high", "mid", and "low"
+    "backness": ["front", "front", "front", "front", "front", "back", "back", "back", "back", "back", "central", "central"], # choose from "front", "back", and "central"
+    "tense":   ["True", "False", "True", "False", "False", "True", "False", "Ture", "False", "False", "False", "False"], #choose from True or False
+    "rounded": ["False", "False", "False", "False", "False", "True", "True", "True", "True", "False", "False", "False"], #choose from True or False
+})
+
+eng_vowels
+print("-------------------")
+print("1. Filter the df: show only **high back rounded vowels**") 
+eng_vowels[(eng_vowels["height"]=="high") & (eng_vowels["backness"]=="back") & (eng_vowels["rounded"]==True)]
+print("-------------------")
+print("2. Negation and slicing: display all vowels that are **not tense**")
+eng_vowels[~(eng_vowels["tense"]==True)]
+print("-------------------")
+print("3. Tehn display only the first three vowels of that group")
+eng_vowels[~(eng_vowels["tense"]==True)].head(3)
+print("-------------------")
+print("4. Sort the df by **height** and **backness**")
+eng_vowels.sort_values(["height", "backness"])
+print("-------------------")
+print("5. Count how many vowels are rounded, tense, or both")
+rounded = eng_vowels["rounded"].sum()
+tense = eng_vowels["tense"].sum()
+both = (eng_vowels["rounded"] & eng_vowels["tense"]).sum()
+print("| Rounded:", rounded, "| Tense:", tense, "| Both:", both)
+```
+
+```{python}
+import pandas as pd
+
+name = "Bob, Susie, Jimbo"
+prof = "teacher, doctor, lawyer"
+age = "45, 63, 119"
+
+name_split = name.split(",")
+prof_split = prof.split(",")
+age_split = age.split(",")
+
+recap_df = pd.DataFrame([prof_split, age_split], columns=name_split)
+
+print(recap_df)
+```
+
+```{python}
+import pandas as pd 
+
+line1 = "English German Spanish French"
+line2 = "dog Hund perro chien"
+line3 = "cat Katze gato chat"
+line4 = "house Haus casa maison"
+
+line1_split = line1.split()
+line2_split = line2.split()
+line3_split = line3.split()
+line4_split = line4.split()
+
+line_df = pd.DataFrame([line2_split, line3_split, line4_split], columns = line1_split)
+
+print(line_df)
+```
+
+```{python}
+import pandas as pd
+
+df = pd.DataFrame({
+    "language": ["Latin", "Greek", "Sanskrit", "Finnish"],
+    "family":   ["Indo-European", "Indo-European", "Indo-European", "Uralic"],
+    "speakers_millions": [0, 0, 0, 6],
+    "location": ["Italy", "Greece", "India", "Finland"]
+})
+
+df
+```
+
+```{python}
+df["is_extinct"] = [True, True, True, False]
+df
+print("---------------------")
+
+# Drop (returns a new DF unless inplace=True)
+df_no_family = df.drop(columns=["family"])
+df_no_family
+print("---------------------")
+
+# Drop (returns a new DF unless inplace=True) 
+df_no_latin = df.drop([0])
+df_no_latin
+print("---------------------")
+
+df_reset_no_latin = df_no_latin.reset_index()
+df_reset_no_latin
+print("---------------------")
+
+df = df.rename(columns={"speakers_millions": "speakers_M"})
+df
+print("---------------------")
+
+df_ind_drop = df.reset_index(drop=True)
+df_ind_drop
+print("---------------------")
+
+df_set = df.set_index("language")
+df_set
+```
+
+```{python}
+import pandas as pd
+
+name = "Bob, Susie, Jimbo"
+prof = "teacher, doctor, lawyer"
+age = "45, 63, 119"
+
+name_split = name.split(",")
+prof_split = prof.split(",")
+age_split = age.split(",")
+
+recap_df = pd.DataFrame([prof_split, age_split], columns=name_split)
+
+print(recap_df)
+print("---------------------")
+print("---------------------")
+# Drop (returns a new DF unless inplace=True) 
+recap_no_prof = recap_df.drop([0])
+recap_no_prof
+print("---------------------")
+recap_reset_no_prof = recap_no_prof.reset_index()
+recap_reset_no_prof
+print("---------------------")
+print("---------------------")
+recap_ind_drop = recap_df.reset_index(drop=True)
+recap_ind_drop
+print("---------------------")
+print("---------------------")
+recap_set = recap_df.set_index("Bob")
+recap_set
+```
+
+```{python}
+import pandas as pd
+
+df = pd.DataFrame({
+    "language": ["Latin", "Greek", "Sanskrit", "Finnish"],
+    "family":   ["Indo-European", "Indo-European", "Indo-European", "Uralic"],
+    "speakers_M": [0, 0, 0, 6],
+    "location": ["Italy", "Greece", "India", "Finland"]
+})
+
+df.sort_values(by="location", ascending=True)
+print("---------------------")
+
+df.sort_index() # by index
+print("---------------------")
+
+reflexes_verb = pd.Series(
+    {"Latin": 8, "Greek": 10, "Sanskrit": 12, "Old English": 6}
+)
+reflexes_noun = pd.Series(
+    {"Latin": 5, "Greek": 7, "Gothic": 4, "Old Church Slavonic": 3}
+)
+
+combined = pd.DataFrame({"verb": reflexes_verb, "noun": reflexes_noun})
+combined
+print("---------------------")
+
+combined_filled = combined.fillna(0)
+print("---------------------")
+
+combined_dropped = combined.dropna()
+print("---------------------")
+
+total = reflexes_verb.add(reflexes_noun, fill_value=0)
+total.sort_values(ascending=False)
+print("---------------------")
+
+reflexes_verb = pd.Series(
+    {"Latin": 8, "Greek": 10, "Sanskrit": 12, "Old English": 6}
+)
+reflexes_noun = pd.Series(
+    {"Latin": 5, "Greek": 7, "Gothic": 4, "Old Church Slavonic": 3}
+)
+combined = pd.DataFrame({"verb": reflexes_verb, "noun": reflexes_noun})
+combined
+
+column_totals = combined.sum(axis=0)
+print(column_totals)
+```
+
+```{python}
+import pandas as pd
+
+sound_df = pd.DataFrame({
+  "s": [35,28,40],
+  "z": [20,25,18],
+  "t": [50,40,53],
+  "k": [42,35,48],
+  "m": [18,12,17],
+  "n": [22,20,19],
+})
+
+sound_df
+print("---------------------")
+sound_total = sound_df["s"].add(sound_df["z"] + sound_df["t"] + sound_df["k"] + sound_df["m"] + sound_df["n"])
+```
+
+```{python}
+import pandas as pd
+
+stops = {
+    "Language": ["English", "Spanish", "Hindi"],
+    "Nasals": [3, 3, 4],
+    "Oral Stops": [6, 6, 5]
+}
+
+stops_df = pd.DataFrame(stops)
+stops_df
+
+
+stops_total = stops_df["Nasals"].add(stops_df["Oral Stops"])
+
+print(stops_total)
+
+# Save to CSV
+stops_df.to_csv("stops.csv", index=False) #"index=True" would give you an index in your file
+```
+
+```{python}
+import pandas as pd
+
+# Create the data
+data = {
+    "Consonant": ["p", "b", "t", "d", "k", "g", "s", "z", "m", "n", "l", "r", "w", "j", "h"],
+    "Place": ["bilabial", "bilabial", "alveolar", "alveolar", "velar", "velar",
+              "alveolar", "alveolar", "bilabial", "alveolar", "alveolar", "alveolar",
+              "labial-velar", "palatal", "glottal"],
+    "Manner": ["stop", "stop", "stop", "stop", "stop", "stop",
+               "fricative", "fricative", "nasal", "nasal", "lateral", "trill",
+               "glide", "glide", "fricative"],
+    "Voicing": ["voiceless", "voiced", "voiceless", "voiced", "voiceless", "voiced",
+                "voiceless", "voiced", "voiced", "voiced", "voiced", "voiced",
+                "voiced", "voiced", "voiceless"]
+}
+
+# Create DataFrame
+df = pd.DataFrame(data)
+
+# Show DataFrame
+print(df)
+
+# Save to CSV
+df.to_csv("conlang_c.csv", index=False) #"index=True" would give you an index in your file
+```
+
+```{python}
+import openpyxl
+import pandas as pd
+
+data = {
+    "Consonant": ["p", "b", "t", "d", "k", "g", "s", "z", "m", "n", "l", "r", "w", "j", "h"],
+    "Place": ["bilabial", "bilabial", "alveolar", "alveolar", "velar", "velar",
+              "alveolar", "alveolar", "bilabial", "alveolar", "alveolar", "alveolar",
+              "labial-velar", "palatal", "glottal"],
+    "Manner": ["stop", "stop", "stop", "stop", "stop", "stop",
+               "fricative", "fricative", "nasal", "nasal", "lateral", "trill",
+               "glide", "glide", "fricative"],
+    "Voicing": ["voiceless", "voiced", "voiceless", "voiced", "voiceless", "voiced",
+                "voiceless", "voiced", "voiced", "voiced", "voiced", "voiced",
+                "voiced", "voiced", "voiceless"]
+}
+
+# Create DataFrame
+df = pd.DataFrame(data)
+
+df.to_excel("conlang_c.xlsx", index=False)
+```
+
+```{python}
+stops_csv_df = pd.read_csv("conlang_c.csv")
+stops_csv_df.head()
+
+print("\n-------------------------------------\n")
+
+stops_excel_df = pd.read_excel("conlang_c.xlsx")
+stops_excel_df.head()
+```
+
+```{python}
+ref_df = pd.DataFrame({
+    "Language": ["Latin","Greek","Sanskrit","Gothic","OCS","Oscan"],
+    "Family":   ["Italic","Hellenic","Indic","Germanic","Slavic","Italic"],
+    "Reflexes": [8,10,12,4,3,5]
+})
+
+int(ref_df["Reflexes"].sum())
+print("\n-------------------------------------\n")
+
+ref_df.groupby("Family")["Reflexes"].sum()
+print("\n-------------------------------------\n")
+
+ref_df.groupby("Family").agg(
+    total=("Reflexes","sum"),
+    mean=("Reflexes","mean"),
+    n=("Reflexes","count")
+)
+```
+
+```{python}
+import pandas as pd
+
+df = pd.DataFrame({
+    "Language": ["English","German","Dutch","Spanish","Italian","French","Greek","Hindi","Bengali"],
+    "Family":   ["Germanic","Germanic","Germanic","Romance","Romance","Romance","Hellenic","Indic","Indic"],
+    "Consonants": [24, 25, 20, 17, 23, 22, 25, 33, 29],
+    "Vowels": [20, 16, 13, 5, 7, 15, 7, 11, 7]
+})
+
+df.groupby("Family").agg(
+    total_c=("Consonants","sum"),
+    total_v=("Vowels","sum"),
+    mean_c=("Consonants","mean"),
+    mean_v=("Vowels","mean"),
+    n=("Language","count"))
+```
+
+```{python}
+import matplotlib.pyplot as plt
+
+counts = ref_df.groupby("Family")["Reflexes"].sum()
+ax = counts.plot(kind="bar", title="Reflex Counts by Family")
+ax.set_xlabel("Family")
+ax.set_ylabel("Total Reflexes")
+
+plt.tight_layout()   # optional, avoids label cutoff
+plt.show()           # displays the plotcd
+```
+
+```{python}
+import matplotlib.pyplot as plt
+
+con_c_df = pd.read_csv("conlang_c.csv")
+stops_df = con_c_df[(con_c_df["Manner"] == "stop")]
+
+stop_counts = stops_df["Place"].value_counts().sort_index()
+stop_counts
+```
+
+```{python}
+jfk = "This year’s space budget is three times what it was in January 1961, and it is greater than the space budget of the previous eight years combined. That budget now stands at $5,400,000 a year — a staggering sum, though somewhat less than we pay for cigarettes and cigars every year. Space expenditures will soon rise some more, from 40 cents per person per week to more than 50 cents a week for every man, woman and child in the United States, for we have given this program a high national priority — even though I realize that this is in some measure an act of faith and vision, for we do not now know what benefits await us. But if I were to say, my fellow citizens, that we shall send to the moon, 240,000 miles away from the control station in Houston, a giant rocket more than 300 feet tall, the length of this football field, made of new metal alloys, some of which have not yet been invented, capable of standing heat and stresses several times more than have ever been experienced, fitted together with a precision better than the finest watch, carrying all the equipment needed for propulsion, guidance, control, communications, food and survival, on an untried mission, to an unknown celestial body, and then return it safely to Earth, re-entering the atmosphere at speeds of over 25,000 miles per hour, causing heat about half that of the temperature of the sun — almost as hot as it is here today — and do all this, and do it right, and do it first before this decade is out — then we must be bold. I’m the one who is doing all the work, so we just want you to stay cool for a minute. [laughter] However, I think we’re going to do it, and I think that we must pay what needs to be paid. I don’t think we ought to waste any money, but I think we ought to do the job. And this will be done in the decade of the sixties. It may be done while some of you are still here at school at this college and university. It will be done during the term of office of some of the people who sit here on this platform. But it will be done. And it will be done before the end of this decade. I am delighted that this university is playing a part in putting a man on the moon as part of a great national effort of the United States of America. Many years ago, the great British explorer George Mallory, who was to die on Mount Everest, was asked why did he want to climb it? He said, “Because it is there.” Well, space is there, and we’re going to climb it, and the moon and the planets are there, and new hopes for knowledge and peace are there. And, therefore, as we set sail we ask God’s blessing on the most hazardous and dangerous and greatest adventure on which man has ever embarked. Thank you."
+```
+
+```{python}
+import re
+
+jfk_words = re.split(r"[\s\W]+", jfk)
+jfk_words = [word.lower() for word in jfk_words if word]
+jfk_words
+```
+
+```{python}
+len(jfk_words)
+print("---------------------")
+
+jfk_unique = {}
+
+for word in jfk_words:
+  if word in jfk_unique:
+    jfk_unique[word] += 1
+  else:
+    jfk_unique[word] = 1
+    
+jfk_unique
+```
+
+```{python}
+#this doesn't work the way we want it to
+list1 = ["a", "b", "c", "d"]
+list2 = [0, 1, 2, 3]
+
+new_dict = {}
+
+for i in list1:
+  for j in list2:
+    new_dict[i] = j
+
+print(new_dict)
+```
+
+```{python}
+#ZIP()
+#This works how we want it to
+list1 = ["a", "b", "c", "d"]
+list2 = [0, 1, 2, 3]
+
+new_dict = {i: j for i, j in zip(list1, list2)}
+
+print(new_dict)
+```
+
+```{python}
+import pandas as pd
+
+new_dict = {}
+
+new_dict = {i: [j] for i, j in zip(list1, list2)} #fixed code by adding brackets around the "j"
+
+df = pd.DataFrame(new_dict)
+df
+```
+
+```{python}
+import pandas as pd
+
+list1 = ["a", "b", "c", "d"]
+list2 = [0, 1, 2, 3]
+list3 = ["alpha", "beta", "gamma", "delta"]
+list4 = ["fee", "fie", "fo", "fum"]
+
+
+list2dict = {i: [j, k, l] for i, j, k, l in zip(list1, list2, list3, list4)}
+
+list2dict
+
+print("---------------------")
+
+
+df2 = pd.DataFrame(list2dict)
+df2
+```
+
+```{python}
+import pandas as pd
+
+consonant =  ["p", "b", "t", "d", "k", "g", "s", "z", "m", "n", "l", "r", "w", "j", "h"]
+place = ["bilabial", "bilabial", "alveolar", "alveolar", "velar", "velar", "alveolar", "alveolar", "bilabial", "alveolar", "alveolar", "alveolar", "labial-velar", "palatal", "glottal"]
+manner = ["stop", "stop", "stop", "stop", "stop", "stop", "fricative", "fricative", "nasal", "nasal", "lateral", "trill", "glide", "glide", "fricative"]
+voice = ["voiceless", "voiced", "voiceless", "voiced", "voiceless", "voiced", "voiceless", "voiced", "voiced", "voiced", "voiced", "voiced", "voiced", "voiced", "voiceless"]
+
+
+print("---------------------")
+
+
+consonant_dict = {i: [j, k, l] for i, j, k, l in zip(consonant, place, manner, voice)}
+
+consonant_dict
+
+
+print("---------------------")
+
+
+consonant_df = pd.DataFrame(consonant_dict)
+consonant_df
+
+
+print("---------------------")
+
+
+consonant_df.to_csv("consonant_output.csv", index=False) 
+```
+
+```{python}
+list = ["eeny", "meeny", "miney", "mo"]
+
+for i in list:
+  for c in i:
+    print(c)
+```
+
+```{python}
+words = ["eeny", "meeny", "miney", "mo"]
+words_dict = {}
+
+for w in words:
+    vowels = 0               # temporary variable counter
+    for c in w:              
+        if c in "aeiou":     # check if the letter is a vowel
+            vowels += 1      # increment the counter
+    print(w, ":", vowels, "vowels")
+    words_dict[w] = vowels
+    
+print(words_dict)
+```
+
+```{python}
+sentences = [
+    ["the", "cat", "sleeps"],
+    ["the", "dog", "runs"],
+    ["the", "bird", "flies"]
+]
+
+for sentence in sentences:
+  for w in sentence:
+    print(w)
+```
+
+```{python}
+words = [
+    ["lin", "guis", "tics"],
+    ["pho", "no", "lo", "gy"],
+    ["mor", "pho", "lo", "gy"]
+]
+
+syl_count = 0
+
+for word in words:
+  for syl in word:
+    print(syl)
+    syl_count += 1
+    
+print(syl_count)
+```
+
+```{python}
+words = ["zombie", "ghoul", "ghost", "vampire"]
+begins_with_g = [False, True, True, False]
+rhymes_with_most = [False, False, True, False]
+
+length = []
+
+for word in words:
+  length.append(len(word))
+  
+
+length_dict = {i: [j, k, l] for i, j, k, l in zip(words, begins_with_g, rhymes_with_most, length)}
+
+length_dict
+```
+
+```{python}
+#Nested Dictionaries
+outer = {
+    "key1": {"inner_key1": "value1", "inner_key2": "value2"},
+    "key2": {"inner_key1": "value3", "inner_key2": "value4"}
+}
+
+#In context
+students = {
+    "Alice": {"quiz": 9, "homework": 10, "final": 8},
+    "Ben": {"quiz": 7, "homework": 9, "final": 10}
+}
+
+#In linguistic context
+consonants = {
+    "p": {"voice": False, "place": "bilabial", "manner": "stop"},
+    "t": {"voice": False, "place": "alveolar", "manner": "stop"},
+    "k": {"voice": False, "place": "velar", "manner": "stop"}
+}
+```
+
+```{python}
+list = ["eeny", "meeny", "miney", "mo"]
+list[0][0]
+
+sentences = [
+    ["the", "cat", "sleeps"],
+    ["the", "dog", "runs"],
+    ["the", "bird", "flies"]
+]
+sentences[0][0]
+
+students = {
+    "Alice": {"quiz": 9, "homework": 10, "final": 8},
+    "Ben": {"quiz": 7, "homework": 9, "final": 10}
+}
+
+students["Alice"]["quiz"]
+```
+
+```{python}
+import pandas as pd
+consonants = {
+    "p": {"voice": False, "place": "bilabial", "manner": "stop"},
+    "t": {"voice": False, "place": "alveolar", "manner": "stop"},
+    "k": {"voice": False, "place": "velar", "manner": "stop"}
+}
+df = pd.DataFrame(consonants)
+df
+```
+
+```{python}
+import pandas as pd
+consonants = {
+    "p": {"voice": False, "place": "bilabial", "manner": "stop"},
+    "t": {"voice": False, "place": "alveolar", "manner": "stop"},
+    "k": {"voice": False, "place": "velar", "manner": "stop"}
+}
+
+df = pd.DataFrame(consonants).T.reset_index(names="phoneme")
+df
+```
+
+```{python}
+phonemes = ["p", "b", "t", "d", "k", "g"]
+voicing  = [False, True, False, True, False, True]
+place    = ["bilabial", "bilabial", "alveolar", "alveolar", "velar", "velar"]
+manner   = ["stop"] * 6
+
+new_dict = {}
+for i, j, k, l in zip(phonemes,voicing,place,manner):
+  new_dict[i] = {
+    "Voicing": j, 
+    "Place": k,
+    "Manner": l
+}
+
+df = pd.DataFrame(new_dict).T.reset_index(names="Phonemes")
+df
+```
+
+```{python}
+import pandas as pd
+
+words   = ["students", "run", "ran", "roots", "languages"]
+pos_tags = ["NOUN", "VERB", "VERB", "NOUN", "NOUN"]
+lemmas  = ["student", "run", "run", "root", "language"]
+freqs   = [5, 3, 2, 4, 6]
+
+dict = {}
+for i, j, k, l in zip(words,pos_tags,lemmas,freqs):
+  dict[i] = {
+    "POS": j, 
+    "Lemma": k,
+    "Frequency": l
+}
+
+dict_df = pd.DataFrame(dict).T.reset_index(names="Words")
+dict_df
+```
+
+```{r}
+reticulate::py_config()
+```
+
+```{r}
+spacy <- reticulate::import("spacy")
+nlp <- spacy$load("en_core_web_sm")
+```
+
+```{python}
+import spacy
+import pandas as pd
+
+# Load English model
+nlp = spacy.load("en_core_web_sm")
+
+text = "Dr. Byrd's students can't wait to analyze PIE roots!"
+doc = nlp(text)
+
+# Create list of dicts, one per token
+data = []
+for t in doc:
+    data.append({
+        "text": t.text,
+        "lemma": t.lemma_,
+        "POS": t.pos_,
+        "tag": t.tag_,
+        "stop": t.is_stop,
+        "is_punct": t.is_punct
+    })
+
+# Make DataFrame
+df = pd.DataFrame(data)
+print(df)
+```
+
+```{r}
+install.packages("rmarkdown")
+```
+
+```{python}
+import spacy
+import pandas as pd
+from collections import Counter
+import matplotlib.pyplot as plt
+
+
+# Load English model
+nlp = spacy.load("en_core_web_sm")
+
+#Opens the txt file
+with open("alice.txt","r") as alice_txt:
+  alice_str = alice_txt.read()
+
+#Use nlp()
+doc = nlp(alice_str)
+
+#Eliminate stopwords etc...
+content_lemmas = [t.lemma_.lower() for t in doc
+                  if not (t.is_stop or t.is_punct or t.is_space or t.like_num)]
+
+#Identify frequencies and create a data frame
+freq = Counter(content_lemmas)
+df_freq = (pd.DataFrame(freq.items(), columns=["lemma", "count"])
+           .sort_values("count", ascending=False))
+df_freq.head(10)
+
+#Plot them using matplotlib
+top20 = df_freq.head(20)
+plt.figure()
+plt.bar(top20["lemma"], top20["count"])
+plt.title("Top 20 Content Lemmas")
+plt.xlabel("Lemma")
+plt.ylabel("Count")
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+```
+
+```{python}
+import spacy 
+import pandas as pd
+
+# Load English model
+nlp = spacy.load("en_core_web_sm")
+
+text2 = "President Pitzer, Mr. Vice President, Governor Connally, ladies and gentlemen: I am delighted to be here today. We meet in an hour of change and challenge."
+doc2 = nlp(text2)
+[s.text for s in doc2.sents]
+```
+
+```{python}
+doc = nlp("The quick brown fox jumps over the lazy dog.")
+[(t.text, t.dep_, t.head.text) for t in doc]
+```
+
+```{python}
+import spacy
+from spacy import displacy
+
+nlp = spacy.load("en_core_web_sm")
+doc = nlp("The quick brown fox jumps over the lazy dog.")
+
+svg = displacy.render(doc, style="dep")  # returns SVG/HTML markup
+with open("syntax_tree.svg", "w", encoding="utf-8") as f:
+    f.write(svg)
+```
+
+```{python}
+import spacy
+from spacy import displacy
+
+nlp = spacy.load("en_core_web_sm")
+doc = npl("This spaCy library is too dang powerful.")
+
+svg = displacy.render(doc, style="dep")  # returns SVG/HTML markup
+with open("syntax_tree.svg", "w", encoding="utf-8") as f:
+    f.write(svg)
+```
+
+```{python}
+import spacy
+
+nlp = spacy.load("en_core_web_sm")
+
+doc = nlp("We considered the options and chose the best proposal.")
+pairs = []
+for tok in doc:
+    if tok.pos_ == "VERB":
+        dobj = [c for c in tok.children if c.dep_ == "dobj"]
+        if dobj:
+            pairs.append((tok.lemma_, dobj[0].text))
+pairs
+```
+
+```{python}
+import spacy
+
+nlp = spacy.load("en_core_web_sm")
+
+# Step 1: Our manual list of violent verbs
+verbs_of_violence = ["attack", "hit", "kick", "strike", "punch", "assault", "kill", "hurt"]
+
+# Step 2: Process a sentence
+doc = nlp("They punched, kicked, and attacked the intruder before fleeing.")
+
+# Step 3: Find any tokens whose lemma is in our list
+matches = [(t.text, t.lemma_) for t in doc if t.lemma_ in verbs_of_violence]
+
+print(matches)
+```
+
+```{python}
+import spacy
+nlp = spacy.load("en_core_web_sm")
+
+# Step 1: Define your semantic group
+dog_words = ["dog", "hound", "terrier", "poodle", "retriever", "shepherd", "beagle", "collie"]
+
+# Step 2: Sample text
+text = "The farmer owned three terriers, but the poodle ran away with a collie."
+
+# Step 3: Process the text
+doc = nlp(text)
+
+# Step 4: Collect all nouns that are objects of verbs or prepositions
+
+obj_deps = ["dobj", "pobj", "obj"]
+objects = []
+
+for tok in doc:
+    if tok.dep_ in obj_deps:
+        objects.append(tok)
+
+# Step 5: Keep only those whose lemma is in our semantic group
+matches = [(t.text, t.lemma_) for t in objects if t.lemma_.lower() in dog_words]
+
+print(matches)
+```
+
+```{python}
+#DO THIS IN TERMINAL LATER
+
+# Installing spacy-wordnet
+python -m pip install spacy spacy-wordnet nltk
+
+# Installing NLTK wordnet data
+python -m nltk.downloader wordnet omw
+
+# Downloading English spaCy model (you should already have this)
+python -m spacy download en_core_web_sm
+```
+
+```{python}
+import spacy
+from spacy_wordnet.wordnet_annotator import WordnetAnnotator
+
+nlp = spacy.load("en_core_web_sm")
+# Attach the WordNet annotator; it will use the NLTK WordNet data you downloaded
+nlp.add_pipe("spacy_wordnet", after="tagger")
+```
+
+```{python}
+doc = nlp("The dog chased the cat.")
+tok = doc[1]
+
+synsets = tok._.wordnet.synsets()   # list of NLTK-style Synset objects
+
+print(f"These are the different meanings the word '{tok}' has:")
+count = 0
+
+for i in synsets:
+  print(f"{count}: ", i)
+  count += 1
+```
+
+```{python}
+doc = nlp("The dog chased the cat.")
+tok = doc[2]
+
+for s in tok._.wordnet.synsets():
+    print(s, "→", s.definition())
+```
+
+```{python}
+for s in tok._.wordnet.synsets():
+    print(s, "→", s.examples())
+```
+
+```{python}
+for s in tok._.wordnet.synsets():
+    print(s, "→", [l.name() for l in s.lemmas()])
+```
+
+```{python}
+import spacy
+from nltk.corpus import wordnet as wn
+from nltk.corpus.reader.wordnet import NOUN, VERB, ADJ, ADV
+
+# Load spaCy
+nlp = spacy.load("en_core_web_sm")
+
+# Sentence with both noun and verb "bear"
+text = "The bears bear their burdens bravely."
+doc = nlp(text)
+
+# Map spaCy POS tags to WordNet POS tags -- this is a **function**, we'll get to these soon
+def get_wordnet_pos(spacy_pos):
+    if spacy_pos.startswith("N"):
+        return NOUN
+    elif spacy_pos.startswith("V"):
+        return VERB
+    elif spacy_pos.startswith("J"):
+        return ADJ
+    elif spacy_pos.startswith("R"):
+        return ADV
+    return None
+
+# Loop through tokens and look up WordNet entries
+for token in doc:
+    wn_pos = get_wordnet_pos(token.tag_)
+    lemma = token.lemma_.lower()
+
+    if wn_pos and not token.is_stop and not token.is_punct:
+        synsets = wn.synsets(lemma, pos=wn_pos)
+        print(f"\n{token.text.upper()} ({token.pos_}) → lemma: {lemma}")
+        for s in synsets[:3]:  # show just the first 3 senses
+            print(f"  - {s.definition()}  [examples: {s.examples()}]")
+```
+
+```{python}
+import spacy
+nlp = spacy.load("en_core_web_sm")
+
+text = "Dr. Byrd's students can't wait to analyze PIE roots!"
+
+doc = nlp(text)
+[t.text for t in doc]
+```
+
+```{python}
+import spacy
+import pandas as pd
+
+# Load English model
+nlp = spacy.load("en_core_web_sm")
+
+text = "Dr. Byrd's students can't wait to analyze PIE roots!"
+doc = nlp(text)
+
+# Create list of dicts, one per token
+data = []
+for t in doc:
+    data.append({
+        "text": t.text,
+        "lemma": t.lemma_,
+        "POS": t.pos_,
+        "tag": t.tag_,
+        "stop": t.is_stop,
+        "is_punct": t.is_punct
+    })
+
+# Make DataFrame
+df = pd.DataFrame(data)
+print(df)
+```
+
+```{python}
+import spacy
+
+content_lemmas = [t.lemma_.lower() for t in doc
+                  if not (t.is_stop or t.is_punct or t.is_space or t.like_num)]
+```
+
+```{python}
+from collections import Counter
+import pandas as pd
+
+freq = Counter(content_lemmas)
+df_freq = (pd.DataFrame(freq.items(), columns=["lemma", "count"])
+           .sort_values("count", ascending=False))
+df_freq.head(10)
+```
+
+```{python}
+import matplotlib.pyplot as plt
+
+top10 = df_freq.head(10)
+plt.figure()
+plt.bar(top10["lemma"], top10["count"])
+plt.title("Top 10 Content Lemmas")
+plt.xlabel("Lemma")
+plt.ylabel("Count")
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+```
+
+```{python}
+import spacy 
+import pandas as pd
+
+# Load English model
+nlp = spacy.load("en_core_web_sm")
+
+text2 = "President Pitzer, Mr. Vice President, Governor Connally, ladies and gentlemen: I am delighted to be here today. We meet in an hour of change and challenge."
+doc2 = nlp(text2)
+[s.text for s in doc2.sents]
+```
+
+```{python}
+import spacy
+from nltk.corpus import wordnet as wn
+from nltk.corpus.reader.wordnet import NOUN, VERB, ADJ, ADV
+
+# Load spaCy
+nlp = spacy.load("en_core_web_sm")
+
+# Sentence with both noun and verb "bear"
+text = "The bears bear their burdens bravely."
+doc = nlp(text)
+
+# Map spaCy POS tags to WordNet POS tags -- this is a **function**, we'll get to these soon
+def get_wordnet_pos(spacy_pos):
+    if spacy_pos.startswith("N"):
+        return NOUN
+    elif spacy_pos.startswith("V"):
+        return VERB
+    elif spacy_pos.startswith("J"):
+        return ADJ
+    elif spacy_pos.startswith("R"):
+        return ADV
+    return None
+
+# Loop through tokens and look up WordNet entries
+for token in doc:
+    wn_pos = get_wordnet_pos(token.tag_)
+    lemma = token.lemma_.lower()
+
+    if wn_pos and not token.is_stop and not token.is_punct:
+        synsets = wn.synsets(lemma, pos=wn_pos)
+        print(f"\n{token.text.upper()} ({token.pos_}) → lemma: {lemma}")
+        for s in synsets[:3]:  # show just the first 3 senses
+            print(f"  - {s.definition()}  [examples: {s.examples()}]")
+```
+
+```{python}
+import spacy
+from spacy_wordnet.wordnet_annotator import WordnetAnnotator
+
+nlp = spacy.load("en_core_web_sm")
+# Attach the WordNet annotator; it will use the NLTK WordNet data you downloaded
+nlp.add_pipe("spacy_wordnet", after="tagger")
+```
+
+```{python}
+import spacy 
+import pandas as pd
+from collections import Counter
+import matplotlib.pyplot as plt
+from nltk.corpus import wordnet as wn
+from nltk.corpus.reader.wordnet import NOUN, VERB, ADJ, ADV
+
+#Load english model
+nlp = spacy.load("en_core_web_sm")
+
+#Text
+getty = "Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.But, in a larger sense, we can not dedicate—we can not consecrate—we can not hallow—this ground. The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us—that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion—that we here highly resolve that these dead shall not have died in vain—that this nation, under God, shall have a new birth of freedom—and that government of the people, by the people, for the people, shall not perish from the earth."
+
+#Make text nlp
+doc = nlp(getty)
+print("---------------------")
+
+#Clean
+content_lemmas = [t.lemma_.lower() for t in doc
+                  if not (t.is_stop or t.is_punct or t.is_space or t.like_num)]
+print("---------------------")                  
+
+#Find frequencies
+freq = Counter(content_lemmas)
+df_freq = (pd.DataFrame(freq.items(), columns=["lemma", "count"])
+           .sort_values("count", ascending=False))
+df_freq.head(10)
+print("---------------------")
+
+#Make the chart
+top10 = df_freq.head(10)
+plt.figure()
+plt.bar(top10["lemma"], top10["count"])
+plt.title("Top 10 Content Lemmas")
+plt.xlabel("Lemma")
+plt.ylabel("Count")
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+print("---------------------")
+
+#Select the first sentence
+sents = [s.text for s in doc.sents]
+first_sent = sents[0]
+first_sent
+print("---------------------")
+
+doc2 = nlp(first_sent)
+
+#Parse each word
+def get_wordnet_pos(spacy_pos):
+    if spacy_pos.startswith("N"):
+        return NOUN
+    elif spacy_pos.startswith("V"):
+        return VERB
+    elif spacy_pos.startswith("J"):
+        return ADJ
+    elif spacy_pos.startswith("R"):
+        return ADV
+    return None
+  
+for token in doc2:
+  wn_pos = get_wordnet_pos(token.tag_)
+  lemma = token.lemma_.lower()
+
+  if wn_pos and not token.is_stop and not token.is_punct:
+      synsets = wn.synsets(lemma, pos=wn_pos)
+      print(f"\n{token.text.upper()} ({token.pos_}) → lemma: {lemma}")
+        for s in synsets[:3]:  # show just the first 3 senses
+            print(f"  - {s.definition()}  [examples: {s.examples()}]")
+```
+
+```{python}
+def get_antonyms(word): # this is also a function
+    antonyms = set() # A set is like a list, but prevents duplicates
+    for syn in wn.synsets(word):
+        for lemma in syn.lemmas():  # analyzes each lemma associated with the token
+            for ant in lemma.antonyms():
+                antonyms.add(ant.name())
+    return list(antonyms)
+
+get_antonyms("slow")
+```
+
+```{python}
+import spacy
+from spacy.tokens import Token
+from nltk.corpus import wordnet as wn
+
+nlp = spacy.load("en_core_web_sm")
+
+# Register a getter-based extension
+def get_synsets(token):
+    # You can filter by POS if you want, e.g., pos=wn.NOUN for nouns
+    return wn.synsets(token.lemma_.lower())
+
+Token.set_extension("synsets", getter=get_synsets, force=True)
+
+doc = nlp("dog")
+token = doc[0]
+
+word_synsets = token._.synsets  # now this works
+for synset in word_synsets:
+    hypernym_names = [h.name() for h in synset.hypernyms()]
+    hyponym_names  = [h.name() for h in synset.hyponyms()]
+    print(f"\nSense: {synset.name()}")
+    print(f"  Hypernyms: {hypernym_names}")
+    print(f"  Hyponyms:  {hyponym_names}")
+```
+
+```{python}
+import spacy
+from spacy.tokens import Token
+from nltk.corpus import wordnet as wn
+
+# Creating a function to "get" synsets
+def get_synsets(token):
+    # You can filter by POS if you want, e.g., pos=wn.NOUN for nouns
+    return wn.synsets(token.lemma_.lower())
+
+Token.set_extension("synsets", getter=get_synsets, force=True)
+
+doc = nlp("dog")
+token = doc[0]
+
+word_synsets = token._.synsets  # now this works
+for synset in word_synsets:
+    hypernym_names = [h.name() for h in synset.hypernyms()]
+    hyponym_names  = [h.name() for h in synset.hyponyms()]
+    mero_names = [h.name() for h in synset.part_meronyms()]
+    holo_names = [h.name() for h in synset.part_holonyms()]
+    print(f"\nSense: {synset.name()}")
+    print(f"  Hypernyms: {hypernym_names}")
+    print(f"  Hyponyms:  {hyponym_names}")
+    print(f"  Part Meronyms: {mero_names}")
+    print(f"  Part Holonyms:  {holo_names}")
+```
+
+```{python}
+import spacy
+from spacy.tokens import Token
+from nltk.corpus import wordnet as wn
+
+# Creating a function to "get" synsets
+def get_synsets(token):
+    # You can filter by POS if you want, e.g., pos=wn.NOUN for nouns
+    return wn.synsets(token.lemma_.lower())
+
+Token.set_extension("synsets", getter=get_synsets, force=True)
+
+doc = nlp("dog")
+token = doc[0]
+
+word_synsets = token._.synsets  # now this works
+for synset in word_synsets:
+    hypernym_names = [h.name() for h in synset.hypernyms()]
+    hyponym_names  = [h.name() for h in synset.hyponyms()]
+    mero_names = [h.name() for h in synset.part_meronyms()]
+    holo_names = [h.name() for h in synset.part_holonyms()]
+    ent_names = [h.name() for h in synset.entailments()]
+    print(f"\nSense: {synset.name()}")
+    print(f"  Hypernyms: {hypernym_names}")
+    print(f"  Hyponyms:  {hyponym_names}")
+    print(f"  Part Meronyms: {mero_names}")
+    print(f"  Part Holonyms:  {holo_names}")
+    print(f"  Entailments:  {ent_names}")
+```
+
+```{python}
+import spacy
+from spacy.tokens import Token
+from nltk.corpus import wordnet as wn
+
+# Creating a function to "get" synsets
+def get_synsets(token):
+    # You can filter by POS if you want, e.g., pos=wn.NOUN for nouns
+    return wn.synsets(token.lemma_.lower())
+
+Token.set_extension("synsets", getter=get_synsets, force=True)
+
+doc = nlp("slow")
+token = doc[0]
+
+for s in doc._.wordnet.synsets():
+    print(s, "→", s.definition())
+
+word_synsets = token._.synsets  # now this works
+for synset in word_synsets:
+    hypernym_names = [h.name() for h in synset.hypernyms()]
+    hyponym_names  = [h.name() for h in synset.hyponyms()]
+    mero_names = [h.name() for h in synset.part_meronyms()]
+    holo_names = [h.name() for h in synset.part_holonyms()]
+    ent_names = [h.name() for h in synset.entailments()]
+    print(f"\nSense: {synset.name()}")
+    print(f"  Hypernyms: {hypernym_names}")
+    print(f"  Hyponyms:  {hyponym_names}")
+    print(f"  Part Meronyms: {mero_names}")
+    print(f"  Part Holonyms:  {holo_names}")
+    print(f"  Entailments:  {ent_names}")
+```
+
+```{python}
+dog = nlp("dog")[0]._.wordnet.synsets()[0]
+comparison = nlp("cat")[0]._.wordnet.synsets()[0]
+
+print("wup:",  dog.wup_similarity(comparison))   # Wu–Palmer similarity
+```
+
+```{python}
+import spacy
+from spacy.matcher import PhraseMatcher
+from nltk.corpus import wordnet as wn
+
+nlp = spacy.load("en_core_web_sm")
+
+violent_vs = ['assail', 'assault', 'atom-bomb', 'atomise', 'atomize', 'attack', 'backbite', 'backhand', 'bait', 'bastinado', 'bat', 'batter', 'bayonet', 'beak', 'beat', 'beef', 'beetle', 'beleaguer', 'bellyache', 'bemoan', 'beset', 'besiege', 'best', 'better', 'bewail', 'birdie', 'bitch', 'blast', 'bleat', 'blindside', 'blitz', 'blockade', 'bogey', 'bomb', 'bombard', 'bounce', 'break', 'buffet', 'bulldog', 'bunker', 'bunt', 'bust', 'butt', 'cannon', 'cannonade', 'carom', 'carry', 'charge', 'cheat', 'checkmate', 'chicane', 'chip', 'chop', 'chouse', 'circumvent', 'clap', 'clobber', 'clout', 'coldcock', 'complain', 'connect', 'counterattack', 'counterstrike', 'crab', 'cream', 'croak', 'croquet', 'crump', 'crush', 'cuff', 'dab', 'deck', 'declaim', 'deplore', 'desecrate', 'dishonor', 'dishonour', 'dive-bomb', 'double', 'down', 'dribble', 'drive', 'drub', 'dump', 'dunk', 'eagle', 'ebb', 'eliminate', 'exceed', 'firebomb', 'floor', 'fly', 'foul', 'full', 'gang-rape', 'gas', 'glide-bomb', 'gnarl', 'gripe', 'grizzle', 'grouch', 'ground', 'grouse', 'grumble', 'hammer', 'headbutt', 'heel', 'hen-peck', 'hew', 'hit', 'hole', 'holler', 'hook', 'hydrogen-bomb', 'immobilise', 'immobilize', 'infest', 'invade', 'inveigh', 'jab', 'jockey', 'jump', 'kick', 'kill', 'knap', 'knife', 'knock', 'knuckle', 'kvetch', 'lament', 'lash', 'lick', 'loft', 'master', 'mate', 'molest', 'murmur', 'mutter', 'nag', 'nuke', 'occupy', 'out-herod', 'outbrave', 'outcry', 'outdo', 'outdraw', 'outfight', 'outflank', 'outfox', 'outgeneral', 'outgo', 'outgrow', 'outmaneuver', 'outmanoeuvre', 'outmarch', 'outmatch', 'outpace', 'outperform', 'outplay', 'outpoint', 'outrage', 'outrange', 'outroar', 'outsail', 'outscore', 'outsell', 'outshine', 'outshout', 'outsmart', 'outstrip', 'outwear', 'outweigh', 'outwit', 'overcome', 'overmaster', 'overpower', 'overreach', 'overrun', 'overwhelm', 'paste', 'pat', 'pattern-bomb', 'peck', 'pelt', 'pepper', 'percuss', 'pick', 'pip', 'pitch', 'plain', 'play', 'plug', 'poniard', 'pop', 'profane', 'protest', 'pull', 'punch', 'putt', 'quetch', 'racket', 'raid', 'rail', 'rap', 'rape', 'ravish', 'reassail', 'repine', 'report', 'retaliate', 'rout', 'rush', 'savage', 'sclaff', 'scold', 'scoop', 'screw', 'set', 'shaft', 'shame', 'shank', 'shell', 'shoot', 'sic', 'sideswipe', 'single', 'skip-bomb', 'slam-dunk', 'slap', 'sledge', 'sledgehammer', 'slice', 'smash', 'snag', 'snap', 'snick', 'spread-eagle', 'spreadeagle', 'spur', 'squawk', 'stab', 'steamroll', 'steamroller', 'storm', 'strafe', 'strike', 'stroke', 'subdue', 'submarine', 'surmount', 'surpass', 'surprise', 'surround', 'tap', 'teargas', 'thrash', 'thresh', 'tip', 'toe', 'top', 'torpedo', 'triple', 'trounce', 'trump', 'undercut', 'upstage', 'urticate', 'vanquish', 'violate', 'volley', 'whang', 'whine', 'whip', 'whomp', 'worst', 'yammer', 'yawp', 'zap']
+
+# WordNet helpers (via NLTK) – returns only verb synsets
+def verb_senses(word):
+    return wn.synsets(word, pos='v')  # verb synsets only
+
+# Collects all (recursive) hyponyms for a verb synset (troponyms in WN terms).
+# This function recursively collects all *hyponyms* (a.k.a. “troponyms” for verbs)
+# of a given synset. A hyponym is a more *specific* instance of an action.
+# Example: the verb “attack.v.01” has hyponyms like “bomb.v.01”, “invade.v.01”, etc.
+def all_verb_hyponyms(root):
+      seen, stack = set(), [root]
+    while stack:
+        cur = stack.pop()
+        if cur in seen:
+            continue
+        seen.add(cur)
+        # For verbs, .hyponyms() are the troponyms
+        stack.extend(cur.hyponyms())
+    return {s for s in seen if s.pos() == 'v'}
+
+# This function extracts lemma names (the “canonical” word forms)
+# from a set of synsets, e.g. 'strike.v.01' → ['strike', 'hit', 'smite', ...].
+# Optionally filters out multiword expressions like "shoot_down".
+def lemmas_from_synsets(synsets, keep_multiword=False):
+    out = set()
+    for s in synsets:
+        for lem in s.lemmas():
+            name = lem.name().lower()
+            if not keep_multiword and "_" in name:
+                continue
+            out.add(name.replace("_", " "))
+    return out
+
+# Build a violence lexicon from WordNet using a few intuitive seeds
+seed_verbs = ["attack", "assault", "hit", "strike", "punch", "kick", "stab", "shoot", "beat"]
+base_synsets = []
+for w in seed_verbs:
+    ss = verb_senses(w)
+    if ss:
+        # take the most “central” sense by picking the one with most hyponyms
+        ss_scored = sorted(ss, key=lambda s: len(s.hyponyms()), reverse=True)
+        base_synsets.append(ss_scored[0])
+
+# expand via hyponyms (troponyms)
+expanded = set()
+for s in base_synsets:
+    expanded |= all_verb_hyponyms(s)
+
+# collect lemmas (single-token by default)
+violent_verb_lemmas = sorted(lemmas_from_synsets(expanded, keep_multiword=False) | set(seed_verbs))
+print(f"{len(violent_verb_lemmas)} violent verb lemmas (sample):", violent_verb_lemmas[:25])
+
+# 4) spaCy PhraseMatcher by lemma — IMPORTANT: run full pipeline on patterns
+matcher = PhraseMatcher(nlp.vocab, attr="LEMMA")
+patterns = list(nlp.pipe(violent_verb_lemmas))  # not make_doc: we need lemmas
+matcher.add("VIOLENCE", patterns)
+```
+
+```{python}
+import spacy
+nlp_en = spacy.load("en_core_web_sm")
+
+doc = nlp_en("The children ran quickly to their houses.")
+for token in doc:
+    print(token.text, token.lemma_, token.pos_)
+```
+
+```{python}
+import spacy
+from nltk.corpus import wordnet as wn
+from nltk.corpus.reader.wordnet import NOUN, VERB, ADJ, ADV
+
+# Load spaCy
+nlp = spacy.load("en_core_web_sm")
+
+# Sentence with both noun and verb "bear"
+text = "The bears bear their burdens bravely."
+doc = nlp(text)
+
+# Map spaCy POS tags to WordNet POS tags -- this is a **function**, we'll get to these soon
+def get_wordnet_pos(spacy_pos):
+    if spacy_pos.startswith("N"):
+        return NOUN
+    elif spacy_pos.startswith("V"):
+        return VERB
+    elif spacy_pos.startswith("J"):
+        return ADJ
+    elif spacy_pos.startswith("R"):
+        return ADV
+    return None
+
+# Loop through tokens and look up WordNet entries
+for token in doc:
+    wn_pos = get_wordnet_pos(token.tag_)
+    lemma = token.lemma_.lower()
+
+    if wn_pos and not token.is_stop and not token.is_punct:
+        synsets = wn.synsets(lemma, pos=wn_pos)
+        print(f"\n{token.text.upper()} ({token.pos_}) → lemma: {lemma}")
+        for s in synsets[:3]:  # show just the first 3 senses
+            print(f"  - {s.definition()}  [examples: {s.examples()}]")
+```
+
+```{python}
+import spacy
+from nltk.corpus import wordnet as wn
+
+nlp = spacy.load("en_core_web_sm")
+
+dog = nlp("dog")[0]._.wordnet.synsets()[0]
+comparison = nlp("cat")[0]._.wordnet.synsets()[0]
+
+print("wup:",  dog.wup_similarity(comparison))   # Wu–Palmer similarity
+```
+
+```{python}
+import spacy
+from spacy.matcher import PhraseMatcher
+from nltk.corpus import wordnet as wn
+
+nlp = spacy.load("en_core_web_sm")
+
+# WordNet helpers (via NLTK) – returns only verb synsets
+def verb_senses(word):
+    return wn.synsets(word, pos='v')  # verb synsets only
+
+# Collects all (recursive) hyponyms for a verb synset (troponyms in WN terms).
+# This function recursively collects all *hyponyms* (a.k.a. “troponyms” for verbs)
+# of a given synset. A hyponym is a more *specific* instance of an action.
+# Example: the verb “attack.v.01” has hyponyms like “bomb.v.01”, “invade.v.01”, etc.
+def all_verb_hyponyms(root):
+      seen, stack = set(), [root]
+    while stack:
+        cur = stack.pop()
+        if cur in seen:
+            continue
+        seen.add(cur)
+        # For verbs, .hyponyms() are the troponyms
+        stack.extend(cur.hyponyms())
+    return {s for s in seen if s.pos() == 'v'}
+
+# This function extracts lemma names (the “canonical” word forms)
+# from a set of synsets, e.g. 'strike.v.01' → ['strike', 'hit', 'smite', ...].
+# Optionally filters out multiword expressions like "shoot_down".
+def lemmas_from_synsets(synsets, keep_multiword=False):
+    out = set()
+    for s in synsets:
+        for lem in s.lemmas():
+            name = lem.name().lower()
+            if not keep_multiword and "_" in name:
+                continue
+            out.add(name.replace("_", " "))
+    return out
+
+# Build a violence lexicon from WordNet using a few intuitive seeds
+seed_verbs = ["attack", "assault", "hit", "strike", "punch", "kick", "stab", "shoot", "beat"]
+base_synsets = []
+for w in seed_verbs:
+    ss = verb_senses(w)
+    if ss:
+        # take the most “central” sense by picking the one with most hyponyms
+        ss_scored = sorted(ss, key=lambda s: len(s.hyponyms()), reverse=True)
+        base_synsets.append(ss_scored[0])
+
+# expand via hyponyms (troponyms)
+expanded = set()
+for s in base_synsets:
+    expanded |= all_verb_hyponyms(s)
+
+# collect lemmas (single-token by default)
+violent_verb_lemmas = sorted(lemmas_from_synsets(expanded, keep_multiword=False) | set(seed_verbs))
+print(f"{len(violent_verb_lemmas)} violent verb lemmas (sample):", violent_verb_lemmas[:25])
+
+# 4) spaCy PhraseMatcher by lemma — IMPORTANT: run full pipeline on patterns
+matcher = PhraseMatcher(nlp.vocab, attr="LEMMA")
+patterns = list(nlp.pipe(violent_verb_lemmas))  # not make_doc: we need lemmas
+matcher.add("VIOLENCE", patterns)
+```
+
+```{python}
+import spacy
+from spacy.matcher import PhraseMatcher
+
+nlp = spacy.load("en_core_web_sm")
+
+violent_vs = ['assail', 'assault', 'atom-bomb', 'atomise', 'atomize', 'attack', 'backbite', 'backhand', 'bait', 'bastinado', 'bat', 'batter', 'bayonet', 'beak', 'beat', 'beef', 'beetle', 'beleaguer', 'bellyache', 'bemoan', 'beset', 'besiege', 'best', 'better', 'bewail', 'birdie', 'bitch', 'blast', 'bleat', 'blindside', 'blitz', 'blockade', 'bogey', 'bomb', 'bombard', 'bounce', 'break', 'buffet', 'bulldog', 'bunker', 'bunt', 'bust', 'butt', 'cannon', 'cannonade', 'carom', 'carry', 'charge', 'cheat', 'checkmate', 'chicane', 'chip', 'chop', 'chouse', 'circumvent', 'clap', 'clobber', 'clout', 'coldcock', 'complain', 'connect', 'counterattack', 'counterstrike', 'crab', 'cream', 'croak', 'croquet', 'crump', 'crush', 'cuff', 'dab', 'deck', 'declaim', 'deplore', 'desecrate', 'dishonor', 'dishonour', 'dive-bomb', 'double', 'down', 'dribble', 'drive', 'drub', 'dump', 'dunk', 'eagle', 'ebb', 'eliminate', 'exceed', 'firebomb', 'floor', 'fly', 'foul', 'full', 'gang-rape', 'gas', 'glide-bomb', 'gnarl', 'gripe', 'grizzle', 'grouch', 'ground', 'grouse', 'grumble', 'hammer', 'headbutt', 'heel', 'hen-peck', 'hew', 'hit', 'hole', 'holler', 'hook', 'hydrogen-bomb', 'immobilise', 'immobilize', 'infest', 'invade', 'inveigh', 'jab', 'jockey', 'jump', 'kick', 'kill', 'knap', 'knife', 'knock', 'knuckle', 'kvetch', 'lament', 'lash', 'lick', 'loft', 'master', 'mate', 'molest', 'murmur', 'mutter', 'nag', 'nuke', 'occupy', 'out-herod', 'outbrave', 'outcry', 'outdo', 'outdraw', 'outfight', 'outflank', 'outfox', 'outgeneral', 'outgo', 'outgrow', 'outmaneuver', 'outmanoeuvre', 'outmarch', 'outmatch', 'outpace', 'outperform', 'outplay', 'outpoint', 'outrage', 'outrange', 'outroar', 'outsail', 'outscore', 'outsell', 'outshine', 'outshout', 'outsmart', 'outstrip', 'outwear', 'outweigh', 'outwit', 'overcome', 'overmaster', 'overpower', 'overreach', 'overrun', 'overwhelm', 'paste', 'pat', 'pattern-bomb', 'peck', 'pelt', 'pepper', 'percuss', 'pick', 'pip', 'pitch', 'plain', 'play', 'plug', 'poniard', 'pop', 'profane', 'protest', 'pull', 'punch', 'putt', 'quetch', 'racket', 'raid', 'rail', 'rap', 'rape', 'ravish', 'reassail', 'repine', 'report', 'retaliate', 'rout', 'rush', 'savage', 'sclaff', 'scold', 'scoop', 'screw', 'set', 'shaft', 'shame', 'shank', 'shell', 'shoot', 'sic', 'sideswipe', 'single', 'skip-bomb', 'slam-dunk', 'slap', 'sledge', 'sledgehammer', 'slice', 'smash', 'snag', 'snap', 'snick', 'spread-eagle', 'spreadeagle', 'spur', 'squawk', 'stab', 'steamroll', 'steamroller', 'storm', 'strafe', 'strike', 'stroke', 'subdue', 'submarine', 'surmount', 'surpass', 'surprise', 'surround', 'tap', 'teargas', 'thrash', 'thresh', 'tip', 'toe', 'top', 'torpedo', 'triple', 'trounce', 'trump', 'undercut', 'upstage', 'urticate', 'vanquish', 'violate', 'volley', 'whang', 'whine', 'whip', 'whomp', 'worst', 'yammer', 'yawp', 'zap']
+
+patterns = [nlp(v) for v in violent_vs]
+matcher = PhraseMatcher(nlp.vocab, attr="LEMMA")
+doc = nlp("They kissed, hit, punched, kicked, and attacked the intruder before fleeing.")
+matcher.add("VIOLENCE", patterns)
+[(doc[s:e].text, doc[s:e].lemma_) for _, s, e in matcher(doc)]
+```
+
+```{python}
+import spacy
+
+nlp_en = spacy.load("en_core_web_sm")
+nlp_fr = spacy.load("fr_core_news_sm")
+nlp_es = spacy.load("es_core_news_sm")
+nlp_de = spacy.load("de_core_news_sm")
+
+text_en = "The students have analyzed Proto-Indo-European roots."
+text_fr = "Les étudiants ont analysé les racines proto-indo-européennes."
+text_es = "Los estudiantes analizaron las raíces protoindoeuropeas."
+text_de = "Die Studenten analysierten die indogermanischen Wurzeln."
+
+for lang, nlp, text in [("English", nlp_en, text_en), ("French", nlp_fr, text_fr), ("Spanish", nlp_es, text_es), ("German", nlp_de, text_de)]:
+    doc = nlp(text)
+    print(f"\n {lang} Tokens:")
+    print([t.text for t in doc])
+```
+
+```{python}
+for lang, nlp, text in [("English", nlp_en, text_en), ("French", nlp_fr, text_fr), ("Spanish", nlp_es, text_es), ("German", nlp_de, text_de)]:
+    doc = nlp(text)
+    print(f"\n {lang} Lemmas:")
+    for token in doc:
+        print(token.text, "→", token.lemma_, token.pos_)
+```
+
+```{python}
+import spacy
+
+nlp_en = spacy.load("en_core_web_sm")
+nlp_fr = spacy.load("fr_core_news_sm")
+nlp_es = spacy.load("es_core_news_sm")
+nlp_de = spacy.load("de_core_news_sm")
+
+text_en = "The boy kicked the ball with ferocity."
+text_fr = "Le garçon a donné un coup de pied dans le ballon avec férocité."
+text_es = "El niño pateó el balón con ferocidad."
+text_de = "Der Junge trat den Ball mit Wucht."
+
+for lang, nlp, text in [("English", nlp_en, text_en), ("French", nlp_fr, text_fr), ("Spanish", nlp_es, text_es), ("German", nlp_de, text_de)]:
+    doc = nlp(text)
+    print(f"\n {lang} Tokens:")
+    print([t.text for t in doc])
+```
+
+```{python}
+for lang, nlp, text in [("English", nlp_en, text_en), ("French", nlp_fr, text_fr), ("Spanish", nlp_es, text_es), ("German", nlp_de, text_de)]:
+    doc = nlp(text)
+    print(f"\n {lang} Lemmas:")
+    for token in doc:
+        print(token.text, "→", token.lemma_, token.pos_)
+```
+
+```{python}
+import pandas as pd
+
+def lemma_table(nlp, text, language):
+    doc = nlp(text)
+    data = [(t.text, t.lemma_, t.pos_) for t in doc if t.is_alpha]
+    return pd.DataFrame(data, columns=["word", "lemma", "pos"]).assign(language=language)
+
+df_all = pd.concat([
+    lemma_table(nlp_en, text_en, "English"),
+    lemma_table(nlp_fr, text_fr, "French"),
+    lemma_table(nlp_es, text_es, "Spanish"),
+    lemma_table(nlp_de, text_de, "German")
+])
+
+df_all
+```
+
+```{python}
+text_en = "Whereas recognition of the inherent dignity and of the equal and inalienable rights of all members of the human family is the foundation of freedom, justice and peace in the world, the peoples of the United Nations have reaffirmed their faith in fundamental human rights and in the dignity and worth of the human person. They have resolved to promote social progress and better standards of life in larger freedom."
+
+text_es = "Considerando que el reconocimiento de la dignidad intrínseca y de los derechos iguales e inalienables de todos los miembros de la familia humana constituye la base de la libertad, la justicia y la paz en el mundo, los pueblos de las Naciones Unidas han reafirmado su fe en los derechos humanos fundamentales y en la dignidad y el valor de la persona humana. Han decidido promover el progreso social y elevar el nivel de vida dentro de una libertad más amplia."
+
+from collections import Counter
+import spacy
+
+nlp_en = spacy.load("en_core_web_sm")
+nlp_es = spacy.load("es_core_news_sm")
+
+def is_def_det(tok, include_contractions=False, lang="en"):
+# True for tokens that are definite determiners
+  if tok.pos_ == "DET" and "Def" in tok.morph.get("Definite"):
+    return True
+  if include_contractions and lang == "es" and tok.text.lower() in {"al", "del"}:
+    return True
+    return False
+
+def def_det_stats(nlp, text, lang_label, include_contractions=False):
+  doc = nlp(text)
+  # word-like tokens only for the denominator
+  word_tokens = [t for t in doc if t.is_alpha]
+  total = len(word_tokens)
+  def_dets = [t.text for t in doc if is_def_det(t, include_contractions, lang=lang_label[:2].lower())]
+  n = len(def_dets)
+  rate = (n / total) if total else 0.0
+  print(f"{lang_label}: {n} definite determiners / {total} word tokens ({rate:.2%})")
+  print("Top forms:", Counter(w.lower() for w in def_dets).most_common())
+
+# Run (set include_contractions=True if you want to count 'al'/'del' in Spanish)
+def_det_stats(nlp_en, text_en, "English", include_contractions=False)
+def_det_stats(nlp_es, text_es, "Spanish", include_contractions=False)
+```
+
+```{python}
+text_fr = "Considérant que la reconnaissance de la dignité inhérente et des droits égaux et inaliénables de tous les membres de la famille humaine constitue le fondement de la liberté, de la justice et de la paix dans le monde, les peuples des Nations Unies ont réaffirmé leur foi dans les droits fondamentaux de l’homme, dans la dignité et la valeur de la personne humaine. Ils se sont engagés à favoriser le progrès social et à élever le niveau de vie dans une liberté plus grande."
+
+text_de = "Da die Anerkennung der angeborenen Würde und der gleichen und unveräußerlichen Rechte aller Mitglieder der menschlichen Familie die Grundlage der Freiheit, der Gerechtigkeit und des Friedens in der Welt bildet, haben die Völker der Vereinten Nationen ihren Glauben an die grundlegenden Menschenrechte sowie an die Würde und den Wert der menschlichen Person erneut bekräftigt. Sie haben beschlossen, sozialen Fortschritt zu fördern und den Lebensstandard in größerer Freiheit zu erhöhen."
+
+nlp_fr = spacy.load("fr_core_news_sm")
+nlp_de = spacy.load("de_core_news_sm")
+
+def_det_stats(nlp_fr, text_fr, "French", include_contractions=False)
+def_det_stats(nlp_de, text_de, "German", include_contractions=False)
+```
+
+```{python}
+# pip install pycountry
+import pycountry
+from nltk.corpus import wordnet as wn
+# List languages available via OMW (IDs)
+codes = sorted(wn.langs())
+
+for code in codes:
+    lang = pycountry.languages.get(alpha_3=code)
+    if lang:
+        print(f"{code} → {lang.name}")
+    else:
+        print(f"{code} → (not found)")
+```
+
+```{python}
+# Example: Spanish lemmas linked to the English synset for 'dog.n.01'
+ss = wn.synset('dog.n.01')
+[lem.name() for lem in ss.lemmas(lang='spa')]
+```
+
+```{python}
+import spacy
+
+nlp_en = spacy.load("en_core_web_sm")
+nlp_fr = spacy.load("fr_core_news_sm")
+nlp_es = spacy.load("es_core_news_sm")
+nlp_de = spacy.load("de_core_news_sm")
+
+text_en = "The students have analyzed Proto-Indo-European roots."
+text_fr = "Les étudiants ont analysé les racines proto-indo-européennes."
+text_es = "Los estudiantes analizaron las raíces protoindoeuropeas."
+text_de = "Die Studenten analysierten die indogermanischen Wurzeln."
+
+for lang, nlp, text in [("English", nlp_en, text_en), ("French", nlp_fr, text_fr), ("Spanish", nlp_es, text_es), ("German", nlp_de, text_de)]:
+    doc = nlp(text)
+    print(f"\n {lang} Tokens:")
+    print([t.text for t in doc])
+```
+
+```{python}
+for lang, nlp, text in [("English", nlp_en, text_en), ("French", nlp_fr, text_fr), ("Spanish", nlp_es, text_es), ("German", nlp_de, text_de)]:
+    doc = nlp(text)
+    print(f"\n {lang} Lemmas:")
+    for token in doc:
+        print(token.text, "→", token.lemma_, token.pos_)
+```
+
+```{python}
+from collections import Counter
+import spacy
+
+text_en = "Whereas recognition of the inherent dignity and of the equal and inalienable rights of all members of the human family is the foundation of freedom, justice and peace in the world, the peoples of the United Nations have reaffirmed their faith in fundamental human rights and in the dignity and worth of the human person. They have resolved to promote social progress and better standards of life in larger freedom."
+
+text_es = "Considerando que el reconocimiento de la dignidad intrínseca y de los derechos iguales e inalienables de todos los miembros de la familia humana constituye la base de la libertad, la justicia y la paz en el mundo, los pueblos de las Naciones Unidas han reafirmado su fe en los derechos humanos fundamentales y en la dignidad y el valor de la persona humana. Han decidido promover el progreso social y elevar el nivel de vida dentro de una libertad más amplia."
+
+nlp_en = spacy.load("en_core_web_sm")
+nlp_es = spacy.load("es_core_news_sm")
+
+def is_preposition(tok):
+  # True for tokens that are prepositions or postpositions
+  return tok.pos_ == "ADP"
+
+def prep_stats(nlp, text, lang_label):
+  doc = nlp(text)
+  # word-like tokens only for the denominator
+  word_tokens = [t for t in doc if t.is_alpha]
+  total = len(word_tokens)
+  preps = [t.text for t in doc if is_preposition(t)]
+  n = len(preps)
+  rate = (n / total) if total else 0.0
+  print(f"{lang_label}: {n} prepositions / {total} word tokens ({rate:.2%})")
+  print("Top forms:", Counter(w.lower() for w in preps).most_common())
+
+# Run on English and Spanish samples
+prep_stats(nlp_en, text_en, "English")
+prep_stats(nlp_es, text_es, "Spanish")
+```
+
+```{python}
+from collections import Counter
+import spacy
+
+text_fr = "Considérant que la reconnaissance de la dignité inhérente et des droits égaux et inaliénables de tous les membres de la famille humaine constitue le fondement de la liberté, de la justice et de la paix dans le monde, les peuples des Nations Unies ont réaffirmé leur foi dans les droits fondamentaux de l’homme, dans la dignité et la valeur de la personne humaine. Ils se sont engagés à favoriser le progrès social et à élever le niveau de vie dans une liberté plus grande."
+
+text_de = "Da die Anerkennung der angeborenen Würde und der gleichen und unveräußerlichen Rechte aller Mitglieder der menschlichen Familie die Grundlage der Freiheit, der Gerechtigkeit und des Friedens in der Welt bildet, haben die Völker der Vereinten Nationen ihren Glauben an die grundlegenden Menschenrechte sowie an die Würde und den Wert der menschlichen Person erneut bekräftigt. Sie haben beschlossen, sozialen Fortschritt zu fördern und den Lebensstandard in größerer Freiheit zu erhöhen."
+
+nlp_fr = spacy.load("fr_core_news_sm")
+nlp_de = spacy.load("de_core_news_sm")
+
+def is_preposition(tok):
+  # True for tokens that are prepositions or postpositions
+  return tok.pos_ == "ADP"
+
+def prep_stats(nlp, text, lang_label):
+  doc = nlp(text)
+  # word-like tokens only for the denominator
+  word_tokens = [t for t in doc if t.is_alpha]
+  total = len(word_tokens)
+  preps = [t.text for t in doc if is_preposition(t)]
+  n = len(preps)
+  rate = (n / total) if total else 0.0
+  print(f"{lang_label}: {n} prepositions / {total} word tokens ({rate:.2%})")
+  print("Top forms:", Counter(w.lower() for w in preps).most_common())
+
+# Run on French and German samples
+prep_stats(nlp_fr, text_fr, "French")
+prep_stats(nlp_de, text_de, "German")
+```
+
+```{python}
+import spacy
+
+el_text = "Ο σκύλος τρέχει γρήγορα στον κήπο. Οι σκύλοι είναι πιστά ζώα."
+zh_text = "狗在花园里跑得很快。狗是忠诚的动物。"
+ja_text = "犬は庭で速く走ります。犬は忠実な動物です。"
+
+nlp_el = spacy.load("el_core_news_sm")
+nlp_zh = spacy.load("zh_core_web_sm")
+nlp_ja = spacy.load("ja_core_news_sm")
+
+for lang, nlp, text in [
+    ("Greek", nlp_el, el_text),
+    ("Chinese", nlp_zh, zh_text),
+    ("Japanese", nlp_ja, ja_text)
+]:
+    doc = nlp(text)
+    print(f"\n{lang} tokens:")
+    print([t.text for t in doc])
+```
+
+```{python}
+import spacy
+
+nlp_el = spacy.load("el_core_news_sm")
+nlp_zh = spacy.load("zh_core_web_sm")
+nlp_ja = spacy.load("ja_core_news_sm")
+
+for lang, nlp, text in [
+    ("Greek", nlp_el, el_text),
+    ("Chinese", nlp_zh, zh_text),
+    ("Japanese", nlp_ja, ja_text)
+]:
+    doc = nlp(text)
+    print(f"\n{lang} lemmas:")
+    print([t.lemma_ for t in doc])
+```
+
+```{python}
+import spacy
+
+cat_el = "Η γάτα κοιμάται στον καναπέ."
+cat_zh = "猫在沙发上睡觉。"
+cat_ja = "猫はソファで寝ます。"
+
+nlp_el = spacy.load("el_core_news_sm")
+nlp_zh = spacy.load("zh_core_web_sm")
+nlp_ja = spacy.load("ja_core_news_sm")
+
+for lang, nlp, text in [
+    ("Greek", nlp_el, cat_el),
+    ("Japanese", nlp_ja, cat_ja)
+]:
+    doc = nlp(text)
+    print(f"\n{lang} lemmas:")
+    print([t.lemma_ for t in doc])
+    
+for lang, nlp, text in [
+    ("Chinese", nlp_zh, cat_zh),
+]:
+    doc = nlp(text)
+    print(f"\n{lang} lemmas:")
+    print([t.text for t in doc])
+```
+
+```{python}
+# pip install Unidecode
+from unidecode import unidecode
+
+el_text = "Ο σκύλος τρέχει γρήγορα στον κήπο. Οι σκύλοι είναι πιστά ζώα."
+print(unidecode(el_text))
+```
+
+```{python}
+# pip install pypinyin
+from pypinyin import pinyin, Style
+
+zh_text = "狗在花园里跑得很快。狗是忠诚的动物。"
+pinyin_list = pinyin(zh_text, style=Style.TONE3)
+print(" ".join([syll[0] for syll in pinyin_list]))
+```
+
+```{python}
+# pip install pykakasi
+import pykakasi
+
+text = "犬は庭で速く走ります。犬は忠実な動物です。"
+
+kks = pykakasi.kakasi()
+result = kks.convert(text)
+romaji = " ".join([item['hepburn'] for item in result])
+print(romaji)
+```
+
+```{python}
+import pycountry
+from nltk.corpus import wordnet as wn
+# List languages available via OMW (IDs)
+codes = sorted(wn.langs())
+
+for code in codes:
+    lang = pycountry.languages.get(alpha_3=code)
+    if lang:
+        print(f"{code} → {lang.name}")
+    else:
+        print(f"{code} → (not found)")
+```
+
+```{python}
+ss = wn.synset('dog.n.01')
+[lem.name() for lem in ss.lemmas(lang='spa')]
+```
+
+```{python}
+from unidecode import unidecode
+from pypinyin import pinyin, Style
+import pykakasi
+
+ss = wn.synset('cat.n.01')
+
+greek_cat = [lem.name() for lem in ss.lemmas(lang='ell')]
+chinese_cat = [lem.name() for lem in ss.lemmas(lang='cmn')]
+japanese_cat = [lem.name() for lem in ss.lemmas(lang='jpn')]
+
+for text in greek_cat:
+  print(unidecode(greek_cat))
+  
+for text in chinese_cat:
+  pinyin_cat_list = pinyin(chinese_cat, style=Style.TONE3),
+  print(" ".join([syll[0] for syll in pinyin_cat_list]))
+  
+for text in japanese_cat:
+  kks = pykakasi.kakasi(),
+  result = kks.convert(text),
+  romaji = " ".join([item['hepburn'] for item in result]),
+  print(romaji)
+```
+
+```{python}
+from collections import Counter
+import spacy
+
+text_ru = "Поскольку признание присущего достоинства и равных и неотъемлемых прав всех членов человеческой семьи является основой свободы, справедливости и всеобщего мира, народы Объединенных Наций вновь подтвердили в Уставе свою веру в основные права человека, в достоинство и ценность человеческой личности. Они постановили содействовать социальному прогрессу и улучшению условий жизни при большей свободе."
+
+nlp_ru = spacy.load("ru_core_news_sm")
+
+def is_preposition(tok):
+  # True for tokens that are prepositions or postpositions
+  return tok.pos_ == "ADP"
+
+def prep_stats(nlp, text, lang_label):
+  doc = nlp(text)
+  # word-like tokens only for the denominator
+  word_tokens = [t for t in doc if t.is_alpha]
+  total = len(word_tokens)
+  preps = [t.text for t in doc if is_preposition(t)]
+  n = len(preps)
+  rate = (n / total) if total else 0.0
+  print(f"{lang_label}: {n} prepositions / {total} word tokens ({rate:.2%})")
+  print("Top forms:", Counter(w.lower() for w in preps).most_common())
+
+# Run on Russian sample
+prep_stats(nlp_ru, text_ru, "Russian")
+```
+
+```{python}
+import spacy
+
+ru_text = "Собака быстро бегает в саду. Собаки преданные животные."
+
+nlp_ru = spacy.load("ru_core_news_sm")
+
+
+for lang, nlp, text in [
+    ("Russian", nlp_ru, ru_text)
+]:
+    doc = nlp(text)
+    print(f"\n{lang} tokens:")
+    print([t.text for t in doc])
+    
+for lang, nlp, text in [
+    ("Russian", nlp_ru, ru_text)
+]:
+    doc = nlp(text)
+    print(f"\n{lang} lemmas:")
+    print([t.lemma_ for t in doc])
+```
+
+```{python}
+book_path = "austen/pride_and_prejudice.txt"
+with open(book_path, mode="r", encoding="utf-8") as book_file:
+  book_lines = book_file.readlines()
+clean_lines = [line.strip().lower() for line in book_lines]
+pride_and_prejudice = [word for line in clean_lines for word in line.split() if word]
+    
+book_path = "austen/sense_and_sensibility.txt"
+with open(book_path, mode="r", encoding="utf-8") as book_file:
+  book_lines = book_file.readlines()
+clean_lines = [line.strip().lower() for line in book_lines]
+sense_and_sensibility = [word for line in clean_lines for word in line.split() if word]
+```
+
+```{python}
+from collections import Counter
+import spacy
+
+nlp_en = spacy.load("en_core_web_sm")
+nlp_es = spacy.load("es_core_news_sm")
+
+def is_preposition(tok):
+  # True for tokens that are prepositions or postpositions
+  return tok.pos_ == "ADP"
+
+def prep_stats(nlp, text, lang_label):
+  doc = nlp(text)
+  # word-like tokens only for the denominator
+  word_tokens = [t for t in doc if t.is_alpha]
+  total = len(word_tokens)
+  preps = [t.text for t in doc if is_preposition(t)]
+  n = len(preps)
+  rate = (n / total) if total else 0.0
+  print(f"{lang_label}: {n} prepositions / {total} word tokens ({rate:.2%})")
+  print("Top forms:", Counter(w.lower() for w in preps).most_common())
+
+# Run on English and Spanish samples
+prep_stats(nlp_en, text_en, "English")
+prep_stats(nlp_es, text_es, "Spanish")
+```
+
+```{python}
+import spacy
+from spacy.matcher import PhraseMatcher
+from nltk.corpus import wordnet as wn
+
+nlp = spacy.load("en_core_web_sm")
+
+# WordNet helpers (via NLTK) – returns only verb synsets
+def verb_senses(word):
+    return wn.synsets(word, pos='v')  # verb synsets only
+
+# Collects all (recursive) hyponyms for a verb synset (troponyms in WN terms).
+# This function recursively collects all *hyponyms* (a.k.a. “troponyms” for verbs)
+# of a given synset. A hyponym is a more *specific* instance of an action.
+# Example: the verb “attack.v.01” has hyponyms like “bomb.v.01”, “invade.v.01”, etc.
+def all_verb_hyponyms(root):
+      seen, stack = set(), [root]
+    while stack:
+        cur = stack.pop()
+        if cur in seen:
+            continue
+        seen.add(cur)
+        # For verbs, .hyponyms() are the troponyms
+        stack.extend(cur.hyponyms())
+    return {s for s in seen if s.pos() == 'v'}
+
+# This function extracts lemma names (the “canonical” word forms)
+# from a set of synsets, e.g. 'strike.v.01' → ['strike', 'hit', 'smite', ...].
+# Optionally filters out multiword expressions like "shoot_down".
+def lemmas_from_synsets(synsets, keep_multiword=False):
+    out = set()
+    for s in synsets:
+        for lem in s.lemmas():
+            name = lem.name().lower()
+            if not keep_multiword and "_" in name:
+                continue
+            out.add(name.replace("_", " "))
+    return out
+
+# Build a violence lexicon from WordNet using a few intuitive seeds
+seed_verbs = ["attack", "assault", "hit", "strike", "punch", "kick", "stab", "shoot", "beat"]
+base_synsets = []
+for w in seed_verbs:
+    ss = verb_senses(w)
+    if ss:
+        # take the most “central” sense by picking the one with most hyponyms
+        ss_scored = sorted(ss, key=lambda s: len(s.hyponyms()), reverse=True)
+        base_synsets.append(ss_scored[0])
+
+# expand via hyponyms (troponyms)
+expanded = set()
+for s in base_synsets:
+    expanded |= all_verb_hyponyms(s)
+
+# collect lemmas (single-token by default)
+violent_verb_lemmas = sorted(lemmas_from_synsets(expanded, keep_multiword=False) | set(seed_verbs))
+print(f"{len(violent_verb_lemmas)} violent verb lemmas (sample):", violent_verb_lemmas[:25])
+
+# 4) spaCy PhraseMatcher by lemma — IMPORTANT: run full pipeline on patterns
+matcher = PhraseMatcher(nlp.vocab, attr="LEMMA")
+patterns = list(nlp.pipe(violent_verb_lemmas))  # not make_doc: we need lemmas
+matcher.add("VIOLENCE", patterns)
+```
+
+```{python}
+def plus_two(number):
+    '''
+    This function adds 2 to the input.
+    '''
+    output = number + 2
+    return(output)
+plus_two(1)
+```
+
+```{python}
+def add_and_mult(a, b):
+    '''
+    This function adds a to b,
+    and multiplies a and b.
+    '''
+    add = a + b
+    mult = a * b
+    return(add, mult)
+add_and_mult(4, 6)
+```
+
+```{python}
+def initialize(full_name):
+    '''
+    Return the person's initials.
+    '''
+    name_parts = full_name.split(" ")
+    initial_list = [name[0]+"." for name in name_parts]
+
+    output = ""
+    for initial in initial_list:
+        output = output + initial
+         #^ Could also be written as output += initial
+
+    return(output)
+  
+initialize("Louisa May Alcott")
+# 'L.M.A.'
+
+initialize("Edgar Allan Poe")
+# 'E.A.P.'
+
+initialize("Jane Austen")
+# 'J.A.'
+
+initialize ("Louis Du Pointe Du Lac")
+```
+
+```{python}
+#You would have to move the initilizer function to a py file and then import it (using the line of code below)
+from initializer import initialize
+
+initialize("Louisa May Alcott")
+# 'L.M.A.'
+
+initialize("Edgar Allan Poe")
+# 'E.A.P.'
+
+initialize("Jane Austen")
+# 'J.A.'
+```
+
+```{python}
+def read_book(book)
+  book_file = open(book_path, mode = 'r')
+  book_lines = book_file.readlines()
+  clean_lines = [line.rstrip().lower() for line in book_lines]
+  output = [w for w in clean_lines if w]
+  return(output)
+
+pride = "austen/pride_and_prejudice.txt"
+sense = "austen/sense_and_sensibility.txt"
+
+read_book(pride)
+read_book(sense)
+```
+
+```{python}
+def read_book(path):
+    with open(path, mode="r", encoding="utf-8") as book_file:
+        book_lines = book_file.readlines()
+    clean_lines = [line.strip().lower() for line in book_lines]
+    
+    # Split each line into words and flatten the list
+    words = [word for line in clean_lines for word in line.split() if word]
+    return words
+
+alice = read_book("alice.txt")
+print(alice[:200])
+```
+
+```{python}
+import spacy
+
+content_lemmas = [t.lemma_.lower() for t in doc
+                  if not (t.is_stop or t.is_punct or t.is_space or t.like_num)]
+```
+
+```{python}
+import spacy
+from nltk.corpus import wordnet as wn
+from nltk.corpus.reader.wordnet import NOUN, VERB, ADJ, ADV
+
+# Load spaCy
+nlp = spacy.load("en_core_web_sm")
+
+# Sentence with both noun and verb "bear"
+text = "The bears bear their burdens bravely."
+doc = nlp(text)
+
+# Map spaCy POS tags to WordNet POS tags -- this is a **function**, we'll get to these soon
+def get_wordnet_pos(spacy_pos):
+    if spacy_pos.startswith("N"):
+        return NOUN
+    elif spacy_pos.startswith("V"):
+        return VERB
+    elif spacy_pos.startswith("J"):
+        return ADJ
+    elif spacy_pos.startswith("R"):
+        return ADV
+    return None
+
+# Loop through tokens and look up WordNet entries
+for token in doc:
+    wn_pos = get_wordnet_pos(token.tag_)
+    lemma = token.lemma_.lower()
+
+    if wn_pos and not token.is_stop and not token.is_punct:
+        synsets = wn.synsets(lemma, pos=wn_pos)
+        print(f"\n{token.text.upper()} ({token.pos_}) → lemma: {lemma}")
+        for s in synsets[:3]:  # show just the first 3 senses
+            print(f"  - {s.definition()}  [examples: {s.examples()}]")
+```
+
+```{python}
+import spacy
+from nltk.corpus import wordnet as wn
+from nltk.corpus.reader.wordnet import NOUN, VERB, ADJ, ADV
+
+nlp_en = spacy.load("en_core_web_sm")
+
+text_en = "Whereas recognition of the inherent dignity and of the equal and inalienable rights of all members of the human family is the foundation of freedom, justice and peace in the world, the peoples of the United Nations have reaffirmed their faith in fundamental human rights and in the dignity and worth of the human person. They have resolved to promote social progress and better standards of life in larger freedom."
+
+
+
+def = nlp_it(argument):
+  doc = nlp(text_en)
+  content_lemmas = [t.lemma_.lower() for t in doc
+                  if not (t.is_stop or t.is_punct or t.is_space or t.like_num)]
+
+    if wn_pos and not token.is_stop and not token.is_punct:
+        synsets = wn.synsets(lemma, pos=wn_pos)
+        print(f"\n{token.text.upper()} ({token.pos_}) → lemma: {lemma}")
+        for s in synsets[:3]:  # show just the first 3 senses
+            print(f"  - {s.definition()}  [examples: {s.examples()}]")
+  
+ 
+```
+
+```{python}
+def read_book(path):
+    with open(path, mode="r", encoding="utf-8") as book_file:
+        book_lines = book_file.readlines()
+    clean_lines = [line.strip().lower() for line in book_lines]
+    
+    # Split each line into words and flatten the list
+    words = [word for line in clean_lines for word in line.split() if word]
+    return words
+```
+
+```{python}
+def izz_infix(word):
+  vowels = ["a","e","i","o","u"]
+  #consonants:[]
+  #for ch in word:
+    #if ch not in vowels:
+      #consonants.append(ch)
+  for ch in word:
+    if word[0] in vowels:
+      pass
+    else:
+      print(ch)
+  
+    
+izz_infix("word")
+```
+
+```{python}
+from collections import Counter
+alice = read_book("alice.txt")
+```
+
+```{python}
+import matplotlib.pyplot as plt
+from collections import Counter
+
+def bar(tokens, k=10, title="Top Words (Bar Chart)"):
+    """
+    Draws a simple bar chart of the k most frequent tokens.
+    """
+    if not tokens:
+        print("No data.")
+        return
+    
+    c = Counter(tokens)
+    top_k = c.most_common(k)
+    words, freqs = zip(*top_k)
+    
+    plt.figure(figsize=(8, 4))
+    plt.bar(words, freqs)
+    plt.title(title)
+    plt.xlabel("Word")
+    plt.ylabel("Frequency")
+    plt.xticks(rotation=45, ha="right")
+    plt.tight_layout()
+    plt.show()
+
+bar(alice, k=10, title="Top Words in Alice")
+```
+
+```{python}
+def pie(text, k=8, title="Character Shares (Pie Chart)", cmap_name="Set3", ignore_spaces=True):
+    """
+    Accepts either a string or a list of characters/words.
+    """
+    # If input is a list, join into one string
+    if isinstance(text, list):
+        text = " ".join(text)
+
+    if not text:
+        print("Empty text.")
+        return
+
+    if ignore_spaces:
+        text = text.replace(" ", "")
+
+    import matplotlib.pyplot as plt
+    from collections import Counter
+
+    c = Counter(text.lower())
+    top_k = c.most_common(k)
+    other_total = sum(v for _, v in list(c.items())[k:])
+
+    labels = [ch for ch, _ in top_k]
+    sizes = [v for _, v in top_k]
+    if other_total > 0:
+        labels.append("Other")
+        sizes.append(other_total)
+
+    cmap = plt.get_cmap(cmap_name)
+    colors = cmap(range(len(labels)))
+
+    plt.figure(figsize=(6, 6))
+    plt.pie(sizes, labels=labels, autopct="%1.1f%%", startangle=90, colors=colors)
+    plt.title(title)
+    plt.tight_layout()
+    plt.show()
+    
+pie(alice, k=5, title="Character Shares")
+```
+
+```{python}
+import matplotlib.pyplot as plt
+from collections import Counter
+
+def line(tokens, title="Line Chart: Rank vs Frequency", logy=False, marker="o"):
+    """
+    Draws a line chart showing word frequency by rank.
+    - tokens: list of strings
+    - logy: if True, uses log scale for frequency (useful for Zipf's Law)
+    - marker: point style (e.g. 'o', '.', None)
+    """
+    if not tokens:
+        print("No data.")
+        return
+
+    c = Counter(tokens)
+    # Sort words by frequency
+    freqs = sorted(c.values(), reverse=True)
+    ranks = range(1, len(freqs) + 1)
+
+    plt.figure(figsize=(8, 4))
+    plt.plot(ranks, freqs, marker=marker)
+    plt.xlabel("Rank (1 = most frequent)")
+    plt.ylabel("Frequency")
+    if logy:
+        plt.yscale("log")
+        plt.ylabel("Frequency (log scale)")
+    plt.title(title)
+    plt.tight_layout()
+    plt.show()
+    
+# Regular scale
+line(alice, title="Rank vs Frequency (Regular)")
+
+# Log scale (shows Zipf-like pattern clearly)
+line(alice, title="Rank vs Frequency (Log Scale)", logy=True)
+```
+
+```{python}
+import matplotlib.pyplot as plt
+from collections import Counter
+import pandas as pd
+
+def scatter(tokens, title="Scatter Plot: Length vs Frequency", logy=False):
+    """
+    Draws a scatter plot showing the relationship between word length and frequency.
+    - tokens: list of strings
+    - logy: if True, uses a log scale for the frequency axis
+    """
+    if not tokens:
+        print("No data.")
+        return
+
+    # Count how often each unique token appears
+    c = Counter(tokens)
+    df = pd.DataFrame({
+        "token": list(c.keys()),
+        "freq": list(c.values()),
+        "length": [len(t) for t in c.keys()]
+    })
+
+    plt.figure(figsize=(8, 4))
+    plt.scatter(df["length"], df["freq"])
+    plt.xlabel("Word Length (characters)")
+    plt.ylabel("Frequency")
+    if logy:
+        plt.yscale("log")
+        plt.ylabel("Frequency (log scale)")
+    plt.title(title)
+    plt.tight_layout()
+    plt.show()
+
+    return df.sort_values("freq", ascending=False).reset_index(drop=True)
+  
+scatter(alice, title="Word Length vs Frequency (Normal Scale)")
+
+# Same plot with log-scaled y-axis
+scatter(alice, title="Word Length vs Frequency (Log Scale)", logy=True)
+```
+
+```{python}
+from collections import Counter
+import matplotlib.pyplot as plt
+
+# Make sure to install the package once:
+# pip install wordcloud
+
+from wordcloud import WordCloud
+
+def wordcloud_plot(tokens, title="Word Cloud", width=800, height=400, background_color="white"):
+    """
+    Draws a word cloud from a list of tokens.
+    - tokens: list of strings
+    - width, height: size of the generated image
+    - background_color: 'white', 'black', etc.
+    """
+    if not tokens:
+        print("No data.")
+        return
+
+    c = Counter(tokens)
+    freqs = dict(c)
+
+    wc = WordCloud(width=width, height=height, background_color=background_color)
+    wc = wc.generate_from_frequencies(freqs)
+
+    plt.figure(figsize=(10, 5))
+    plt.imshow(wc, interpolation="bilinear")
+    plt.axis("off")
+    plt.title(title)
+    plt.tight_layout()
+    plt.show()
+    
+wordcloud_plot(alice, title="Alice in Wonderland Word Cloud")
+```
+
+```{python}
+from collections import Counter
+drac = read_book("dracula.txt")
+```
+
+```{python}
+import matplotlib.pyplot as plt
+from collections import Counter
+
+def bar(tokens, k=10, title="Top Words (Bar Chart)"):
+    """
+    Draws a simple bar chart of the k most frequent tokens.
+    """
+    if not tokens:
+        print("No data.")
+        return
+    
+    c = Counter(tokens)
+    top_k = c.most_common(k)
+    words, freqs = zip(*top_k)
+    
+    plt.figure(figsize=(8, 4))
+    plt.bar(words, freqs)
+    plt.title(title)
+    plt.xlabel("Word")
+    plt.ylabel("Frequency")
+    plt.xticks(rotation=45, ha="right")
+    plt.tight_layout()
+    plt.show()
+
+bar(drac, k=10, title="Top Words in Dracula")
+```
+
+```{python}
+def pie(text, k=8, title="Character Shares (Pie Chart)", cmap_name="Set3", ignore_spaces=True):
+    """
+    Accepts either a string or a list of characters/words.
+    """
+    # If input is a list, join into one string
+    if isinstance(text, list):
+        text = " ".join(text)
+
+    if not text:
+        print("Empty text.")
+        return
+
+    if ignore_spaces:
+        text = text.replace(" ", "")
+
+    import matplotlib.pyplot as plt
+    from collections import Counter
+
+    c = Counter(text.lower())
+    top_k = c.most_common(k)
+    other_total = sum(v for _, v in list(c.items())[k:])
+
+    labels = [ch for ch, _ in top_k]
+    sizes = [v for _, v in top_k]
+    if other_total > 0:
+        labels.append("Other")
+        sizes.append(other_total)
+
+    cmap = plt.get_cmap(cmap_name)
+    colors = cmap(range(len(labels)))
+
+    plt.figure(figsize=(6, 6))
+    plt.pie(sizes, labels=labels, autopct="%1.1f%%", startangle=90, colors=colors)
+    plt.title(title)
+    plt.tight_layout()
+    plt.show()
+    
+pie(drac, k=5, title="Character Shares")
+```
+
+```{python}
+import matplotlib.pyplot as plt
+from collections import Counter
+
+def line(tokens, title="Line Chart: Rank vs Frequency", logy=False, marker="o"):
+    """
+    Draws a line chart showing word frequency by rank.
+    - tokens: list of strings
+    - logy: if True, uses log scale for frequency (useful for Zipf's Law)
+    - marker: point style (e.g. 'o', '.', None)
+    """
+    if not tokens:
+        print("No data.")
+        return
+
+    c = Counter(tokens)
+    # Sort words by frequency
+    freqs = sorted(c.values(), reverse=True)
+    ranks = range(1, len(freqs) + 1)
+
+    plt.figure(figsize=(8, 4))
+    plt.plot(ranks, freqs, marker=marker)
+    plt.xlabel("Rank (1 = most frequent)")
+    plt.ylabel("Frequency")
+    if logy:
+        plt.yscale("log")
+        plt.ylabel("Frequency (log scale)")
+    plt.title(title)
+    plt.tight_layout()
+    plt.show()
+    
+# Regular scale
+line(drac, title="Rank vs Frequency (Regular)")
+
+# Log scale (shows Zipf-like pattern clearly)
+line(drac, title="Rank vs Frequency (Log Scale)", logy=True)
+```
+
+```{python}
+import matplotlib.pyplot as plt
+from collections import Counter
+import pandas as pd
+
+def scatter(tokens, title="Scatter Plot: Length vs Frequency", logy=False):
+    """
+    Draws a scatter plot showing the relationship between word length and frequency.
+    - tokens: list of strings
+    - logy: if True, uses a log scale for the frequency axis
+    """
+    if not tokens:
+        print("No data.")
+        return
+
+    # Count how often each unique token appears
+    c = Counter(tokens)
+    df = pd.DataFrame({
+        "token": list(c.keys()),
+        "freq": list(c.values()),
+        "length": [len(t) for t in c.keys()]
+    })
+
+    plt.figure(figsize=(8, 4))
+    plt.scatter(df["length"], df["freq"])
+    plt.xlabel("Word Length (characters)")
+    plt.ylabel("Frequency")
+    if logy:
+        plt.yscale("log")
+        plt.ylabel("Frequency (log scale)")
+    plt.title(title)
+    plt.tight_layout()
+    plt.show()
+
+    return df.sort_values("freq", ascending=False).reset_index(drop=True)
+  
+scatter(drac, title="Word Length vs Frequency (Normal Scale)")
+
+# Same plot with log-scaled y-axis
+scatter(drac, title="Word Length vs Frequency (Log Scale)", logy=True)
+```
+
+```{python}
+from collections import Counter
+import matplotlib.pyplot as plt
+
+# Make sure to install the package once:
+# pip install wordcloud
+
+from wordcloud import WordCloud
+
+def wordcloud_plot(tokens, title="Word Cloud", width=800, height=400, background_color="white"):
+    """
+    Draws a word cloud from a list of tokens.
+    - tokens: list of strings
+    - width, height: size of the generated image
+    - background_color: 'white', 'black', etc.
+    """
+    if not tokens:
+        print("No data.")
+        return
+
+    c = Counter(tokens)
+    freqs = dict(c)
+
+    wc = WordCloud(width=width, height=height, background_color=background_color)
+    wc = wc.generate_from_frequencies(freqs)
+
+    plt.figure(figsize=(10, 5))
+    plt.imshow(wc, interpolation="bilinear")
+    plt.axis("off")
+    plt.title(title)
+    plt.tight_layout()
+    plt.show()
+    
+wordcloud_plot(drac, title="Dracula Word Cloud")
+```

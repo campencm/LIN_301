@@ -1,0 +1,117 @@
+---
+title: "proj_gutenberg"
+format: html
+---
+
+```{python}
+with open("./dracula.txt", "r", encoding="utf-8") as f:
+    drac = f.read()
+```
+
+```{python}
+with open("./peter_pan.txt", "r", encoding="utf-8") as f:
+    pan = f.read()
+```
+
+```{python}
+#cleaning dracula
+import re
+
+words_drac = re.split(r"[\s\W]+", drac) 
+words_drac = [w for w in words_drac if w]
+words_drac = [w.lower() for w in words_drac if w]
+print(words_drac)
+```
+
+```{python}
+#cleaning peter pan
+
+import re
+
+words_pan = re.split(r"[\s\W]+", pan) 
+words_pan = [w for w in words_pan if w]
+words_pan = [w.lower() for w in words_pan if w]
+print(words_pan)
+```
+
+```{python}
+#total words 
+
+len(words_drac)
+len(words_pan)
+```
+
+```{python}
+#total unique words in dracula
+
+unique_drac = []
+
+for word in words_drac:
+  if word not in unique_drac:
+    unique_drac.append(word)
+    
+len(unique_drac)
+
+#total unique words in peter pan
+
+unique_pan = []
+
+for word in words_pan:
+  if word not in unique_pan:
+    unique_pan.append(word)
+    
+len(unique_pan)
+```
+
+```{python}
+#average word length
+
+ch_words_drac = []
+ch_words_pan = []
+
+for word in words_drac:
+  ch_words_drac.append(len(word))
+print((sum(ch_words_drac))/len(words_drac))
+
+for word in words_pan:
+  ch_words_pan.append(len(word))
+print((sum(ch_words_pan))/len(words_pan))
+```
+
+```{python}
+#number of adverbs
+
+drac_adv = []
+pan_adv = []
+
+for word in words_drac:
+    if word.endswith("ly"):
+        drac_adv.append(word)
+        
+for word in words_pan:
+    if word.endswith("ly"):
+        pan_adv.append(word)
+
+print(len(drac_adv))
+print(len(pan_adv))
+```
+
+```{python}
+#number of diolouge 
+
+diolg = ['"', '“', '”']
+
+drac_diolg = []
+pan_diolg = []
+
+for ch in drac:
+    if word.endswith():
+        drac_diolg.append(word)
+        
+for ch in pan:
+    if (,):
+        pan_diolg.append(word)
+
+print(len(drac_diolg) / 2)
+print(len(pan_diolg) / 2)
+```
