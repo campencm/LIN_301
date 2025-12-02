@@ -1,0 +1,152 @@
+---
+title: "campen_cj_component3"
+format: html
+---
+
+```{python}
+#Packages, nlps, and docs 
+from nltk.corpus import wordnet as wn
+from collections import Counter
+import matplotlib.pyplot as plt
+from spacy.tokens import Token
+import plotly.express as px
+from spacy import displacy
+import pandas as pd
+import spacy
+import nltk
+
+nltk.download('wordnet')
+
+nlp = spacy.load("en_core_web_sm")
+```
+
+```{python}
+#Part 1: Set Up
+
+df= pd.read_csv("./campen_cj_component2.csv")
+
+def lemmatize_def(text):
+  doc = nlp(text)
+  return " ".join([t.lemma_ for t in doc])
+
+df_lemmas = df["word"].apply(lemmatize_def)
+
+#Make list of just the lemmas
+words = (df_lemmas.values).tolist()
+words
+```
+
+```{python}
+#Part 2: My Analysis Plan
+
+#What I want to learn:
+print()
+#What questions or hypotheses I hope to explore:
+print()
+#What results or trends I expect to find:
+print()
+```
+
+```{python}
+#Part 3: Data Analysis (POS Distribution)
+
+#Find Part of Speech
+def pos_def(text):
+  doc = nlp(text)
+  return " ".join([t.pos_ for t in doc])
+
+df_pos = df["word"].apply(pos_def)
+
+pos = (df_pos.values).tolist()
+
+#Frequency of 
+
+freq_pos = Counter(pos)
+
+#Make Pie Chart
+labels = list(freq_pos.keys())
+values = list(freq_pos.values())
+plt.pie(values, labels=labels, autopct='%1.1f%%')
+plt.title("POS Pie Chart")
+plt.show()
+```
+
+```{python}
+#Part 3: Data Analysis (Semantic Similarity)
+
+#Wup Pair Score
+lemma_synsets = {}
+for lemma in words:
+    synsets = wn.synsets(lemma) 
+    if synsets:
+        lemma_synsets[lemma] = synsets[0]  
+    else:
+        None
+    
+print(f"Words with synsets: {len(lemma_synsets)}")
+print(f"Words without synsets: {len(words) - len(lemma_synsets)}\n")
+
+similarities = []
+similarity_details = []
+
+words_list = list(lemma_synsets.keys())
+
+for i in range(len(words_list)):
+    for j in range(i + 1, len(words_list)):
+        word1 = words_list[i]
+        word2 = words_list[j]
+        syn1 = lemma_synsets[word1]
+        syn2 = lemma_synsets[word2]
+        wup = syn1.wup_similarity(syn2)
+        
+        if wup is not None:
+            similarities.append(wup)
+            similarity_details.append((word1, word2, wup))
+
+similarity_details.sort(key=lambda x: x[2], reverse=True)
+
+if similarities:
+    print(f"Total pairs compared: {len(similarities)}")
+    print(f"Average Wu-Palmer similarity: {sum(similarities) / len(similarities):.4f}")
+    print(f"Minimum similarity: {min(similarities):.4f}")
+    print(f"Maximum similarity: {max(similarities):.4f}")
+else:
+    print("No similarity scores could be calculated")
+```
+
+```{python}
+#Part 4: Visualization
+
+wup_df = pd.DataFrame(similarity_details, columns=["w1","w2","score"])
+wup_df["pair"] = wup_df["w1"] + " – " + wup_df["w2"]
+
+fig = px.scatter(
+    wup_df,
+    x=wup_df.index, 
+    y="score",
+    hover_data=["pair", "score"],
+    title="Semantic Similarity (Interactive)")
+fig.show()
+```
+
+```{python}
+#Part 5 Interpretation: 
+
+#What questions I asked of my data:
+print()
+#What methods or functions I used to answer them:
+print()
+#What my analysis revealed (summary of key results):
+print()
+#How I might extend or refine this analysis for my final project:
+print()
+```
+
+```{python}
+#Part 6: Save and Verify
+
+pos_df = pd.DataFrame(freq_pos.items(), columns=["POS", "Frequency"]).sort_values("Frequency", ascending=False)
+
+df_lemmas.to_csv("arm_lemmas.csv", index=False) 
+pos_df.to_csv("arm_pos_frequency.csv", index=False)
+```
