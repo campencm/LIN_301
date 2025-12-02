@@ -25,26 +25,25 @@ nlp = spacy.load("en_core_web_sm")
 
 df= pd.read_csv("./campen_cj_component2.csv")
 
+#Make list of just the lemmas
 def lemmatize_def(text):
   doc = nlp(text)
   return " ".join([t.lemma_ for t in doc])
 
 df_lemmas = df["word"].apply(lemmatize_def)
 
-#Make list of just the lemmas
 words = (df_lemmas.values).tolist()
-words
 ```
 
 ```{python}
 #Part 2: My Analysis Plan
 
 #What I want to learn:
-print()
+print("I was really hoping to be able to do an analysis of an IPA version of this verse because I think it would yeild some really interesting results, but I don't think that'll be possible with the lack of time and resourses I have, so I've choosen to focus on part of speech and semantics instead. I would be interested to see if the story-telling-style of the song changes the distribution of POS and to see what the similarity of the words are because there are a lot of words relating specifically to prison or court (like 'handcuffs' or 'judge').")
 #What questions or hypotheses I hope to explore:
-print()
+print("I hypothesize that because there is a story being told in the song, there will be a lot more verbs than the average amount of verbs in english because storytelling often leans towards nouns and verbs. I also wonder if most of the total pairs are gonna be more similar (above 0.5) or disimilar (below 0.5), I also wonder what the most similar pairs are gonna be so I think I'll do '.head(50)' or something to get a better look at the most similar pairs.")
 #What results or trends I expect to find:
-print()
+print("I expect to see a large percentage of the parts of speech be nouns and verbs and to see a higher similarity in most of the word pairs.")
 ```
 
 ```{python}
@@ -59,15 +58,14 @@ df_pos = df["word"].apply(pos_def)
 
 pos = (df_pos.values).tolist()
 
-#Frequency of 
-
+#Frequency of POS
 freq_pos = Counter(pos)
 
 #Make Pie Chart
 labels = list(freq_pos.keys())
 values = list(freq_pos.values())
 plt.pie(values, labels=labels, autopct='%1.1f%%')
-plt.title("POS Pie Chart")
+plt.title("Part of Speech Pie Chart")
 plt.show()
 ```
 
@@ -127,19 +125,27 @@ fig = px.scatter(
     hover_data=["pair", "score"],
     title="Semantic Similarity (Interactive)")
 fig.show()
+
+fig_100 = px.scatter(
+    wup_df.head(100),
+    x=(wup_df.head(100)).index, 
+    y="score",
+    hover_data=["pair", "score"],
+    title="Semantic Similarity for the 100 Most Similar Word Pairs (Interactive)")
+fig_100.show()
 ```
 
 ```{python}
 #Part 5 Interpretation: 
 
 #What questions I asked of my data:
-print()
+print("I asked for the frequencies of each part of speech and for the Wu-Palmer similarity scores for each pair of words.")
 #What methods or functions I used to answer them:
-print()
+print("In order to find the frequencies of each part of speech I had to use '.pos_' to find the part of speech for each lemma and then had to use the 'counter' function to find the frequency for each pos. To find the Wu-Palmer similarity scores I had to find the synsets for each word and then create a for loop that prints the total pairs compaires as well as the average, minimum, and maximum Wu-Palmer comparison scores (I also made a plot of the top 100 pairs so I could see what they are better).")
 #What my analysis revealed (summary of key results):
-print()
+print("Some of my key results were that there were more verbs than average (like I expected) and that the large amount of my word pairs have a Wu-palmer score below 0.5")
 #How I might extend or refine this analysis for my final project:
-print()
+print("I think I'll try to find a way to see what the words are for each part of speech because I was very confused when I saw there was a POS section called 'Verb Verb' in addition to my section 'Verb' I'm also wonder if I can figure out what the one word in the section 'X' is. I also might try to organize the words into semantic groups and then re-calculate their Wu-Palmer scores to see how similarity looks across different semantic groups.")
 ```
 
 ```{python}
