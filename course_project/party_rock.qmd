@@ -1,0 +1,67 @@
+---
+title: "party_rock"
+format: html
+---
+
+```{python}
+#1 To open and read my file
+
+with open("./party_rock.txt", "r", encoding="utf-8") as f:
+    party = f.read()
+```
+
+```{python}
+#2 Cleaning my data and making it into a list
+
+import re
+import spacy
+import pandas as pd
+from collections import Counter
+nlp = spacy.load("en_core_web_sm")
+
+doc = nlp(party)
+
+pos_party = [t.pos_ for t in doc if not (t.is_punct or t.is_space)]
+pos_party
+```
+
+```{python}
+#POS Distribution
+
+# Frequency of POS
+freq_pos = Counter(pos_party)
+
+# ---- FILTER OUT unwanted POS categories ----
+unwanted = {"X", "VERB VERB"}   # you can add more if needed
+freq_pos = Counter({k: v for k, v in freq_pos.items() if k not in unwanted})
+
+# Compute percentages
+total = sum(freq_pos.values())
+pos_percentages = [round((v / total) * 100, 1) for v in freq_pos.values()]
+
+# Make Pie Chart
+plt.figure(figsize=(8, 8))
+plt.pie(
+    freq_pos.values(),
+    labels=freq_pos.keys(),
+    startangle=90,
+    autopct="%1.1f%%",
+    pctdistance=0.85,
+)
+plt.title("Part of Speech Distribution (Party Rock)")
+
+# Legend
+pos_legend_labels = [
+    f"{cat}: {pct}%" for cat, pct in zip(freq_pos.keys(), pos_percentages)
+]
+plt.legend(
+    pos_legend_labels,
+    loc="center left",
+    bbox_to_anchor=(1.15, 0.5)
+)
+
+plt.tight_layout()
+plt.savefig("pos_chart.jpeg", format="jpeg", dpi=300)
+plt.show()
+plt.close()
+```

@@ -47,26 +47,56 @@ print("I expect to see a large percentage of the parts of speech be nouns and ve
 ```
 
 ```{python}
-#Part 3: Data Analysis (POS Distribution)
+# Part 3: Data Analysis (POS Distribution)
 
-#Find Part of Speech
+# Find Part of Speech
 def pos_def(text):
-  doc = nlp(text)
-  return " ".join([t.pos_ for t in doc])
+    doc = nlp(text)
+    # return a SINGLE POS tag, not combined tags
+    return [t.pos_ for t in doc]
 
+# Apply POS extraction
 df_pos = df["word"].apply(pos_def)
 
-pos = (df_pos.values).tolist()
+# Flatten list of lists into one list of POS tags
+pos = [tag for sublist in df_pos for tag in sublist]
 
-#Frequency of POS
+# Frequency of POS
 freq_pos = Counter(pos)
 
-#Make Pie Chart
-labels = list(freq_pos.keys())
-values = list(freq_pos.values())
-plt.pie(values, labels=labels, autopct='%1.1f%%')
-plt.title("Part of Speech Pie Chart")
+# ---- FILTER OUT unwanted POS categories ----
+unwanted = {"X", "VERB VERB"}   # you can add more if needed
+freq_pos = Counter({k: v for k, v in freq_pos.items() if k not in unwanted})
+
+# Compute percentages
+total = sum(freq_pos.values())
+pos_percentages = [round((v / total) * 100, 1) for v in freq_pos.values()]
+
+# Make Pie Chart
+plt.figure(figsize=(8, 8))
+plt.pie(
+    freq_pos.values(),
+    labels=freq_pos.keys(),
+    startangle=90,
+    autopct="%1.1f%%",
+    pctdistance=0.85,
+)
+plt.title("Part of Speech Distribution")
+
+# Legend
+pos_legend_labels = [
+    f"{cat}: {pct}%" for cat, pct in zip(freq_pos.keys(), pos_percentages)
+]
+plt.legend(
+    pos_legend_labels,
+    loc="center left",
+    bbox_to_anchor=(1.15, 0.5)
+)
+
+plt.tight_layout()
+plt.savefig("pos_chart.jpeg", format="jpeg", dpi=300)
 plt.show()
+plt.close()
 ```
 
 ```{python}
@@ -115,6 +145,20 @@ else:
 ```{python}
 #Part 4: Visualization
 
+fig_100 = px.scatter(
+    wup_df.head(100),
+    x=(wup_df.head(100)).index, 
+    y="score",
+    hover_data=["pair", "score"],
+    title="Top 100 Word Pairs (Interactive)")
+fig_100.show()
+
+fig_100.write_html("100_arm_wup_plot.html", include_plotlyjs="cdn")
+```
+
+```{python}
+#Part 4: Visualization
+
 wup_df = pd.DataFrame(similarity_details, columns=["w1","w2","score"])
 wup_df["pair"] = wup_df["w1"] + " – " + wup_df["w2"]
 
@@ -126,13 +170,7 @@ fig = px.scatter(
     title="Semantic Similarity (Interactive)")
 fig.show()
 
-fig_100 = px.scatter(
-    wup_df.head(100),
-    x=(wup_df.head(100)).index, 
-    y="score",
-    hover_data=["pair", "score"],
-    title="Semantic Similarity for the 100 Most Similar Word Pairs (Interactive)")
-fig_100.show()
+fig.write_html("arm_wup_plot.html", include_plotlyjs="cdn")
 ```
 
 ```{python}
